@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="富乐人呃呃呃的博客">
+  <meta name="author" content="cxz">
+  <meta name="keywords" content="">
+  
+  <title>数据结构基础知识速览 - 富乐人呃呃呃</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wk30xdwKiShMjcvIxmxwYC8m-gzGzoHsz","app_key":"seUi1sMhimu9EShdcBKjcgx2","server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fuleren</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据结构基础知识速览">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-04-15 12:16" pubdate>
+        2023年4月15日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据结构基础知识速览</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月21日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>来打板子练练手（雾</p>
+<h3 id="树状数组-BIT"><a href="#树状数组-BIT" class="headerlink" title="树状数组-BIT"></a>树状数组-BIT</h3><p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n;<span class="hljs-comment">//数据个数</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">BIT</span><br>&#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">100</span>;<br>    <span class="hljs-type">int</span> data[maxn];<br>    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> ((-x) &amp; (x));<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">for</span> (; x &lt;= n; x += <span class="hljs-built_in">lowbit</span>(x))<br>            data[x] += y;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (; x; x -= lowbit)<br>            ans += data[x];<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<h4 id="区间修改"><a href="#区间修改" class="headerlink" title="区间修改"></a>区间修改</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">BIT</span><br>&#123;<br>    <span class="hljs-type">int</span> c1[maxn], c2[maxn];<br>    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> x &amp; (-x);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> tmp = x * y;<br>        <span class="hljs-keyword">for</span>(; x; x += <span class="hljs-built_in">lowbit</span>(x))<br>            c1[x] += y, c2[x] += tmp;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r,<span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-built_in">add</span>(l, val), <span class="hljs-built_in">add</span>(r + <span class="hljs-number">1</span>, -val);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> id = <span class="hljs-number">1</span>)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span>(id==<span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">for</span>(;x ;x -= <span class="hljs-built_in">lowbit</span>(x))<br>                ans += c1[x];<br>        <span class="hljs-keyword">else</span> <br>            <span class="hljs-keyword">for</span>(;x ;x -= <span class="hljs-built_in">lowbit</span>(x))<br>                ans += c2[x];<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    <span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> (r + <span class="hljs-number">1ll</span>) * <span class="hljs-built_in">qeury</span>(r, <span class="hljs-number">1</span>) - <span class="hljs-number">1ll</span> * l * <span class="hljs-built_in">qeury</span>(l - <span class="hljs-number">1</span>, <span class="hljs-number">1</span>) -<br>         (<span class="hljs-built_in">qeury</span>(r, <span class="hljs-number">2</span>) - <span class="hljs-built_in">qeury</span>(l - <span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br>    &#125;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<h3 id="线段树-SegmentTree"><a href="#线段树-SegmentTree" class="headerlink" title="线段树-SegmentTree"></a>线段树-SegmentTree</h3><p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span> + <span class="hljs-number">100</span>;<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a[maxn];<br><span class="hljs-keyword">namespace</span> SegTree<br>&#123;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>;<br><span class="hljs-keyword">typedef</span> Node* lpNode;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span><br>&#123;<br>    lpNode ls, rs;<br>    ll val = <span class="hljs-number">0</span>, mark = <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">upd</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        val = ls-&gt;val + rs-&gt;val;<br>    &#125;<br>&#125;;<br><span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e6</span>;<br>Node pool[maxn];<br>lpNode root = pool;<br>lpNode cnt  = pool + <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pushDown</span><span class="hljs-params">(lpNode p, <span class="hljs-type">int</span> len)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span> (p-&gt;ls == <span class="hljs-literal">nullptr</span>) p-&gt;ls = ++cnt;<br>    <span class="hljs-keyword">if</span> (p-&gt;rs == <span class="hljs-literal">nullptr</span>) p-&gt;rs = ++cnt;<br>    <span class="hljs-keyword">if</span> (!p-&gt;mark) <span class="hljs-keyword">return</span>;<br>    p-&gt;ls-&gt;val += p-&gt;mark * (len / <span class="hljs-number">2</span>);<br>    p-&gt;ls-&gt;mark += p-&gt;mark;<br>    p-&gt;rs-&gt;val += p-&gt;mark * (len - len / <span class="hljs-number">2</span>);<br>    p-&gt;rs-&gt;mark += p-&gt;mark;<br>    p-&gt;mark = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, lpNode p = root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (l == r)<br>        <span class="hljs-keyword">return</span> p-&gt;val = a[l], <span class="hljs-built_in">void</span>();<br>    <span class="hljs-type">int</span> mid = (l + r - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>    <span class="hljs-built_in">pushDown</span>(p, r - l + <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">build</span>(l, mid, p-&gt;ls);<br>    <span class="hljs-built_in">build</span>(mid + <span class="hljs-number">1</span>, r, p-&gt;rs);<br>    p-&gt;<span class="hljs-built_in">upd</span>();<br>&#125;<br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, lpNode p = root, <span class="hljs-type">int</span> cl = L, <span class="hljs-type">int</span> cr = R)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) <span class="hljs-keyword">return</span> p-&gt;val;<br>    <span class="hljs-built_in">pushDown</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>    ll mid = (cl + cr - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>, ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (mid &gt;= l) ans += <span class="hljs-built_in">query</span>(l, r, p-&gt;ls, cl, mid);<br>    <span class="hljs-keyword">if</span> (mid &lt; r) ans += <span class="hljs-built_in">query</span>(l, r, p-&gt;rs, mid + <span class="hljs-number">1</span>, cr);<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> d, lpNode p = root, <span class="hljs-type">int</span> cl = L, <span class="hljs-type">int</span> cr = R)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)<br>        <span class="hljs-keyword">return</span> p-&gt;mark += d, p-&gt;val += d * (cr - cl + <span class="hljs-number">1</span>), <span class="hljs-built_in">void</span>();<br>    <span class="hljs-built_in">pushDown</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>    <span class="hljs-type">int</span> mid = (cl + cr - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (mid &gt;= l) <span class="hljs-built_in">modify</span>(l, r, d, p-&gt;ls, cl, mid);<br>    <span class="hljs-keyword">if</span> (mid &lt; r) <span class="hljs-built_in">modify</span>(l, r, d, p-&gt;rs, mid + <span class="hljs-number">1</span>, cr);<br>    p-&gt;<span class="hljs-built_in">upd</span>();<br>&#125;<br>&#125; <span class="hljs-comment">// namespace SegTree</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="树链剖分"><a href="#树链剖分" class="headerlink" title="树链剖分"></a>树链剖分</h3><p>算法过程: 两次<code>dfs</code>, 第一次找重儿子(重链剖分), 第二次处理dfs序与子树最大dfs序，最后利用线段树维护</p>
+<h4 id="第一次dfs"><a href="#第一次dfs" class="headerlink" title="第一次dfs"></a>第一次dfs</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span> + <span class="hljs-number">100</span>;<br><span class="hljs-type">int</span> hson[maxn], fa[maxn], siz[maxn], dep[maxn];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs1</span><span class="hljs-params">(<span class="hljs-type">int</span> p, <span class="hljs-type">int</span> d = <span class="hljs-number">1</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> size  = <span class="hljs-number">1</span>, ma = <span class="hljs-number">0</span>;<br>    dep[p] = d;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> e = G::head[p];e;e = e-&gt;nxt)<br>        <span class="hljs-keyword">if</span>(!dep[e-&gt;to])<br>        &#123;<br>            <span class="hljs-built_in">dfs1</span>(e-&gt;to, d + <span class="hljs-number">1</span>);<br>            fa[e-&gt;to] = p;<br>            size += size[e-&gt;to];<br>            <span class="hljs-keyword">if</span>(siz[e-&gt;to] &gt; ma)<br>                hson[p] = e-&gt;to, ma = siz[e-&gt;to];<br>        &#125;<br>    siz[p] = size;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="第二次dfs"><a href="#第二次dfs" class="headerlink" title="第二次dfs"></a>第二次dfs</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-type">int</span> madfn[maxn], dfn[maxn], top[maxn];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs2</span><span class="hljs-params">(<span class="hljs-type">int</span> p)</span></span><br><span class="hljs-function"></span>&#123;<br>    madfn[p] = dfn[p] = ++tim;<br>    <span class="hljs-keyword">if</span> (hson[p] != <span class="hljs-number">0</span>)<br>    &#123;<br>        top[hson[p]] = top[p];<br>        <span class="hljs-built_in">dfs2</span>(hson[p]);<br>        madfn[p] = std::<span class="hljs-built_in">max</span>(madfn[p], madfn[hson[p]]);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> e = G::head[p];e;e = e-&gt;nxt)<br>        <span class="hljs-keyword">if</span>(!top[e-&gt;to])<br>        &#123;<br>            top[e-&gt;to] = e-&gt;to;<br>            <span class="hljs-built_in">dfs2</span>(e-&gt;to);<br>            madfn[e-&gt;to] = std::<span class="hljs-built_in">max</span>(madfn[e-&gt;to], madfn[p]);<br>        &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="求LCA"><a href="#求LCA" class="headerlink" title="求LCA"></a>求LCA</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">lca</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (top[a] != top[b])<br>    &#123;<br>        <span class="hljs-keyword">if</span> (dep[top[a]] &gt; dep[top[b]])<br>            a = fa[top[a]];<br>        <span class="hljs-keyword">else</span><br>            b = fa[top[b]];<br>    &#125;<br>    <span class="hljs-keyword">return</span> (dep[a] &gt; dep[b] ? b : a);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="修改链上权值"><a href="#修改链上权值" class="headerlink" title="修改链上权值"></a>修改链上权值</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modifyPath</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (top[x] != top[y])<br>    &#123;<br>        <span class="hljs-keyword">if</span> (dep[top[x]] &gt; dep[top[y]])<br>        &#123;<br>            <span class="hljs-built_in">modify</span>(dfn[top[x]], dfn[x], val);<br>            x = fa[top[x]];<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-built_in">modify</span>(dfn[top[y]], dfn[y], val);<br>            y = fa[top[y]];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (dep[x] &gt; dep[y])<br>        <span class="hljs-built_in">modify</span>(dfn[y], dfn[x], val);<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">modify</span>(dfn[x], dfn[y], val);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="两点间点权和"><a href="#两点间点权和" class="headerlink" title="两点间点权和"></a>两点间点权和</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">queryPath</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(top[x]!=top[y])<br>    &#123;<br>        <span class="hljs-keyword">if</span>(dep[top[x]]&gt;dep[top[y]])<br>        &#123;<br>            ans+=<span class="hljs-built_in">query</span>(dfn[top[x]],dfn[x]);<br>            x = fa[top[x]];<br>        &#125;<br>        <span class="hljs-keyword">else</span> <br>        &#123;<br>            ans+=<span class="hljs-built_in">query</span>(dfn[top[y]],dfn[y]);<br>            y = fa[top[y]];<br>        &#125;<br>    &#125;<br>     <span class="hljs-keyword">if</span> (dep[x] &gt; dep[y])<br>        ans += <span class="hljs-built_in">query</span>(dfn[y], dfn[x]);<br>    <span class="hljs-keyword">else</span><br>        ans += <span class="hljs-built_in">query</span>(dfn[x], dfn[y]);<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="子树修改-amp-查询"><a href="#子树修改-amp-查询" class="headerlink" title="子树修改&amp;查询"></a>子树修改&amp;查询</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modifySubtree</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">modifyPath</span>(dfn[x],madfn[x],val);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">querySubtree</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">queryPath</span>(dfn[x],madfn[x]);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="线段树的建立"><a href="#线段树的建立" class="headerlink" title="线段树的建立"></a>线段树的建立</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-type">int</span> A[maxn],B[maxn];<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;++i)<br>    std::cin&gt;&gt;B[i];<br><span class="hljs-comment">//...</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;++i)<br>    A[dfn[i]] = B[i];<br><span class="hljs-built_in">build</span>();<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/15/%E5%B9%B3%E8%A1%A1%E6%A0%91%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%B8%80/">
+                        <span class="hidden-mobile">平衡树笔记之一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wk30xdwKiShMjcvIxmxwYC8m-gzGzoHsz","appKey":"seUi1sMhimu9EShdcBKjcgx2","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  
+</body>
+</html>

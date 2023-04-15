@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="富乐人呃呃呃的博客">
+  <meta name="author" content="cxz">
+  <meta name="keywords" content="">
+  
+  <title>富乐人呃呃呃</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wk30xdwKiShMjcvIxmxwYC8m-gzGzoHsz","app_key":"seUi1sMhimu9EShdcBKjcgx2","server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fuleren</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="富乐人呃呃呃 个人博客">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/20/8-20%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" target="_blank">
+          2021.8.20模拟赛总结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/20/8-20%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" target="_blank">
+          
+          
+            
+          
+          题目
+T1  莓良心学到了斯特林数的通项公式：
+\begin{Bmatrix}n\\k\end{Bmatrix}=\frac{1}{k!}×∑^{k}_{i=0}(-1)^i\dbinom{k}{i}(k-1)^nT2  尽梨了贪心出结论，再dp，dp时考虑去的店的个数的上界，便可进一步优化时间复杂度
+T3  团不过T4  七负我学会了一种找最大团的方法：Bron–Kerbosch 算法今后应该会
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-20 15:40" pubdate>
+              2021-08-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%80%BB%E7%BB%93/">总结</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/18/2021-8-19%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          2021.8.19训练计划&amp;记录
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/18/2021-8-19%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          
+          
+            
+          
+          排列组合
+P3807 【模板】卢卡斯定理
+
+模板题
+
+P5520 [yLOI2019]青原樱
+P3197 [HNOI2008]越狱
+
+插板法的应用
+
+P2290 [HNOI2004]树的计数
+
+树上的组合数问题。学到了一类数列: $prufur$ 数列
+
+P4981 父子
+
+学到了一个公式: $Cayley$ 公式：  
+
+对于n个不同的节点，能够组成的无根树（原来是无向连通图或者是有标志节点的树
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-18 22:02" pubdate>
+              2021-08-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E5%88%92/">计划</a>
+            
+              <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/">排列组合</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/18/%E5%88%B7%E7%9F%A5%E4%B9%8E%E5%B0%8F%E7%BB%93/" target="_blank">
+          刷知乎小结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/18/%E5%88%B7%E7%9F%A5%E4%B9%8E%E5%B0%8F%E7%BB%93/" target="_blank">
+          
+          
+            
+          
+          Upd:2021-8-19
+
+“齐鲁方案”：指通过药物降低人体免疫反应以达到防止百草枯造成的肺部纤维化的疗法，因齐鲁医院提出并保持60%以上治愈率而闻名。百草枯并非无药可救！！！
+
+
+Upd:2021.8.18  
+
+“克强指数” ：原指经济指数可以造假，但用电量无法造假，因而得出结论：判断时应使用无法改变的硬性指标。
+e.g.婴幼儿出生率-&gt;母婴产品销售数据、疫苗接种数据，etc。
+
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-18 16:27" pubdate>
+              2021-08-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%80%BB%E7%BB%93/">总结</a>
+            
+              <a href="/tags/%E7%9F%A5%E4%B9%8E/">知乎</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/18/2021-8-18%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          2021-8-18训练计划&amp;记录
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/18/2021-8-18%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          
+          
+            
+          
+          
+P1654 OSU!
+CF235B Let’s Play Osu!
+
+两道为同一类型问题，都是求 $x^n$ 的期望的问题。需要在dp时多维护一两个数组来记录非n次方项的值。
+
+CF1042E Vasya and Magic Matrix
+
+学到了可以把期望转化成前缀和一类的式子。
+
+P2634 [国家集训队]聪聪可可
+
+树形dp，与概率关系较小。学到了点分治与树形dp的转化
+
+P6046 纯粹
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-18 07:54" pubdate>
+              2021-08-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E5%88%92/">计划</a>
+            
+              <a href="/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/">概率期望</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/17/2021-8-17%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          2021-8-17训练计划&amp;记录
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/17/2021-8-17%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          
+          
+            
+          
+          概率与期望
+P1297 [国家集训队]单选错位
+P3802 小魔女帕琪
+P4550 收集邮票
+P1365 WJMZBMR打osu! / Easy
+
+基础题
+
+P3750 [六省联考2017]分手是祝愿
+
+运用了每一个按键组合的不可替代性，使得dp可行
+
+P3239 [HNOI2015]亚瑟王
+
+dp状态的设计：可使用两维，来记录前 $i$ 个中用了 $j$ 次的概率，进而可进行无后效性dp
+
+P3
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-17 08:03" pubdate>
+              2021-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E5%88%92/">计划</a>
+            
+              <a href="/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/">概率期望</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/15/2021-8-16%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          2021-8-16训练计划&amp;记录
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/15/2021-8-16%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          
+          
+            
+          
+          概率与期望
+期望是概率意义下的平均
+
+
+P5104 红包发红包
+
+概率dp入门
+
+P1850 换教室  
+
+考察了dp状态的设置。同时一个Floyd坑点的复习:读入边权时要与INF取个min。
+
+P3830 [SHOI2012]随机树  
+
+对“期望是概率意义下的平均”这句话有了更深的理解。同时学会了一个公式：   
+f[i][j]=\sum^{i-1}_{L=1}p[i][L]\times\su
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-15 22:43" pubdate>
+              2021-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E5%88%92/">计划</a>
+            
+              <a href="/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/">概率期望</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/14/2021-8-14%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" target="_blank">
+          2021.8.14模拟赛总结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/14/2021-8-14%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" target="_blank">
+          
+          
+            
+          
+          题目
+T1字符串的结论题：一个字符串的字典序最大字串一定是一个以最大字典序开头，非严格递减的最长字符串.所以我们可以先正着找到字典序最大的字符，然后从后往前使用单调栈贪心，最后倒序输出即可。
+T2我们可以发现，理想情况下最小花费为
+Σ^{n-1}_{i}a_i\times a_{i-1}+min\{a_1,a_2,\ldots,a_n\}可这都建立在 a_{i-1}×a_{i}+a_{i}×a_{
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-14 19:39" pubdate>
+              2021-08-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%80%BB%E7%BB%93/">总结</a>
+            
+              <a href="/tags/%E6%A8%A1%E6%8B%9F%E8%B5%9B/">模拟赛</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/14/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%9B%BE/" target="_blank">
+          最短路图
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/14/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%9B%BE/" target="_blank">
+          
+          
+            
+          
+          最短路图引入有这样一类题，它要求我们处理与一张图的多条最短路有关的问题，我们该如何解决呢？  
+介绍对于这种情况，我们可以很自然地想到，我们可以对于所有最短路上的点重新建一个图，然后在新图中进行其它操作。
+方法我们可以先在原图上以1和 $n$ 为源点各跑一边单源最短路，记1到各点距离为 ${dis1}_1 , {dis1}_2 ,\ldots,{dis1}_n$ ,记 $n$ 点到各点距离为 ${
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-14 18:57" pubdate>
+              2021-08-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/12/2021-8-12%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          2021.8.12训练计划&amp;记录
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/12/2021-8-12%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          
+          
+            
+          
+          同余方程线性同余方程&amp;乘法逆元
+P4549 【模板】裴蜀定理
+P2613 【模板】有理数取余
+P3811 【模板】乘法逆元
+P5431 【模板】乘法逆元2  
+P1082 同余方程
+
+模板题
+
+P1516 青蛙的约会
+
+exgcd的简单运用
+中国剩余定理
+P4777 【模板】扩展中国剩余定理（EXCRT）  
+
+模板题
+
+P4774 [NOI2018]屠龙勇士
+
+学到了对于带系数的EXCR
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-12 08:55" pubdate>
+              2021-08-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E5%88%92%EF%BC%8C%E6%95%B0%E5%AD%A6/">计划，数学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/10/2021-8-11%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          2021.8.11训练计划&amp;记录
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/10/2021-8-11%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92-%E8%AE%B0%E5%BD%95/" target="_blank">
+          
+          
+            
+          
+          整除相关素数
+P4718 【模板】Pollard-Rho算法
+
+模板题
+
+P2441 角色属性树
+
+暴力可过，原理为在随机数据中，任取两数 $a,b$ , $gcd(a,b)&lt;1$ 的概率约为 $31\%$ ， 若为三个数，概率变为 $47\%$ , 四个时为 $55\%$ 。
+
+P5535 【XR-3】小道消息
+
+结论题:伯特兰-切比雪夫定理因此可得，答案必为1或2,分类讨论即可  
+最大
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-10 22:42" pubdate>
+              2021-08-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E5%88%92/">计划</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  
+</body>
+</html>
