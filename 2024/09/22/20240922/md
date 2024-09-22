@@ -20,11 +20,7 @@ tags:
 
 下面是一些图片：
 
-
-{% fold info @图片 %}
 ![牛](20240922/cows.jpg)
 ![海](sea.jpg)
 ![椅](chair.jpg)
 ![花](sea.jpg)
-{% endfold %}
-
