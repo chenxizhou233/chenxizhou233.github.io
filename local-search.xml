@@ -8,7 +8,7 @@
     <link href="/2024/09/30/note-weblab-w0/"/>
     <url>/2024/09/30/note-weblab-w0/</url>
     
-    <content type="html"><![CDATA[<p>‘flex’ 中，默认行排布  </p><p>使用 ‘flex-grow’ 控制单元大小</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><p><code>flex</code> 中，默认使用行排布</p></li><li><p><code>flex-grow</code> 控制单元大小</p></li><li><p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li></ol>]]></content>
     
     
     
