@@ -4,11 +4,51 @@
   
   
   <entry>
-    <title>note-weblab-w0</title>
-    <link href="/2024/09/30/note-weblab-w0/"/>
-    <url>/2024/09/30/note-weblab-w0/</url>
+    <title>20241017</title>
+    <link href="/2024/10/17/20241017/"/>
+    <url>/2024/10/17/20241017/</url>
     
-    <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><p><code>flex</code> 中，默认使用行排布</p></li><li><p><code>flex-grow</code> 控制单元大小</p></li><li><p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="Deutsch"><a href="#Deutsch" class="headerlink" title="Deutsch"></a>Deutsch</h2><p>学习了第四格的人称代词：</p><table><thead><tr><th align="center">第一格</th><th align="center">物主代词</th><th align="center">第四格</th></tr></thead><tbody><tr><td align="center">ich</td><td align="center">mein</td><td align="center">mich</td></tr><tr><td align="center">du</td><td align="center">dein</td><td align="center">dich</td></tr><tr><td align="center">er</td><td align="center">sein</td><td align="center">ihn</td></tr><tr><td align="center">sie</td><td align="center">ihr</td><td align="center">sie</td></tr><tr><td align="center">es</td><td align="center">sein</td><td align="center">es</td></tr><tr><td align="center">wir</td><td align="center">unser</td><td align="center">uns</td></tr><tr><td align="center">ihr</td><td align="center">euer</td><td align="center">euch</td></tr><tr><td align="center">sie</td><td align="center">sein</td><td align="center">sie</td></tr><tr><td align="center">Sie</td><td align="center">Ihr</td><td align="center">Sie</td></tr><tr><td align="center">wer</td><td align="center">wessen</td><td align="center">wen</td></tr></tbody></table><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>详见 <a href="./%E6%9D%82%E9%A2%98%E5%B0%8F%E7%82%B9#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%BB%E5%8F%96%E7%9A%84%E9%97%AE%E9%A2%98">关于字符串读取的问题</a></p><h2 id="Feeling"><a href="#Feeling" class="headerlink" title="Feeling"></a>Feeling</h2><p>最近头又有点晕，不会高血压了吧😢。</p><p>要打印<a href="./20241017/ACM-ICPC_Templates_201805.pdf">ACM的板子</a>了，200多页，好贵</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Journal</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>杂题小点</title>
+    <link href="/2024/10/17/%E6%9D%82%E9%A2%98%E5%B0%8F%E7%82%B9/"/>
+    <url>/2024/10/17/%E6%9D%82%E9%A2%98%E5%B0%8F%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<h2 id="关于字符串读取的问题"><a href="#关于字符串读取的问题" class="headerlink" title="关于字符串读取的问题"></a>关于字符串读取的问题</h2><p>getline(std::cin,str) 读取到缓冲区<code>&#39;\n&#39;</code> 前的字符串。故在 <code>std::cin&gt;&gt;n&gt;&gt;m</code> 这样的代码后，第一次读到的会是空串。因此需要有</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(str==<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-built_in">getline</span>(std::cin,str);<br></code></pre></td></tr></table></figure><p>这样的代码</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ACM</tag>
+      
+      <tag>OI</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>note-weblab-w0</title>
+    <link href="/2024/09/30/note-weblab/"/>
+    <url>/2024/09/30/note-weblab/</url>
+    
+    <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><p><code>flex</code> 中，默认使用行排布</p></li><li><p><code>flex-grow</code> 控制单元大小</p></li><li><p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li></ol><h3 id="10-10"><a href="#10-10" class="headerlink" title="10.10"></a>10.10</h3><p>扩展不定数量多个元素时，可以使用 map() 进行。</p><ul><li><strong>Parentheses <code>()</code></strong>: Used for arrow functions. <strong>Implicit return</strong> statement if there’s only one expression.</li><li><strong>Curly Braces <code>&#123;&#125;</code></strong>: Used for regular function declarations. Explicit <code>return</code> statement needed.</li></ul>]]></content>
     
     
     
