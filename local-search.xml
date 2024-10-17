@@ -5,10 +5,10 @@
   
   <entry>
     <title>20241017</title>
-    <link href="/2024/10/17/20241017/"/>
-    <url>/2024/10/17/20241017/</url>
+    <link href="/posts/44381.html"/>
+    <url>/posts/44381.html</url>
     
-    <content type="html"><![CDATA[<h2 id="Deutsch"><a href="#Deutsch" class="headerlink" title="Deutsch"></a>Deutsch</h2><p>学习了第四格的人称代词：</p><table><thead><tr><th align="center">第一格</th><th align="center">物主代词</th><th align="center">第四格</th></tr></thead><tbody><tr><td align="center">ich</td><td align="center">mein</td><td align="center">mich</td></tr><tr><td align="center">du</td><td align="center">dein</td><td align="center">dich</td></tr><tr><td align="center">er</td><td align="center">sein</td><td align="center">ihn</td></tr><tr><td align="center">sie</td><td align="center">ihr</td><td align="center">sie</td></tr><tr><td align="center">es</td><td align="center">sein</td><td align="center">es</td></tr><tr><td align="center">wir</td><td align="center">unser</td><td align="center">uns</td></tr><tr><td align="center">ihr</td><td align="center">euer</td><td align="center">euch</td></tr><tr><td align="center">sie</td><td align="center">sein</td><td align="center">sie</td></tr><tr><td align="center">Sie</td><td align="center">Ihr</td><td align="center">Sie</td></tr><tr><td align="center">wer</td><td align="center">wessen</td><td align="center">wen</td></tr></tbody></table><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>详见 <a href="source/_posts/%E6%9D%82%E9%A2%98%E5%B0%8F%E7%82%B9.md#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%BB%E5%8F%96%E7%9A%84%E9%97%AE%E9%A2%98">关于字符串读取的问题</a></p><h2 id="Feeling"><a href="#Feeling" class="headerlink" title="Feeling"></a>Feeling</h2><p>最近头又有点晕，不会高血压了吧😢。</p><p>要打印<a href="source/_posts/20241017/ACM-ICPC_Templates_201805.pdf">ACM的板子</a>了，200多页，好贵</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Deutsch"><a href="#Deutsch" class="headerlink" title="Deutsch"></a>Deutsch</h2><p>学习了第四格的人称代词：</p><table><thead><tr><th align="center">第一格</th><th align="center">物主代词</th><th align="center">第四格</th></tr></thead><tbody><tr><td align="center">ich</td><td align="center">mein</td><td align="center">mich</td></tr><tr><td align="center">du</td><td align="center">dein</td><td align="center">dich</td></tr><tr><td align="center">er</td><td align="center">sein</td><td align="center">ihn</td></tr><tr><td align="center">sie</td><td align="center">ihr</td><td align="center">sie</td></tr><tr><td align="center">es</td><td align="center">sein</td><td align="center">es</td></tr><tr><td align="center">wir</td><td align="center">unser</td><td align="center">uns</td></tr><tr><td align="center">ihr</td><td align="center">euer</td><td align="center">euch</td></tr><tr><td align="center">sie</td><td align="center">sein</td><td align="center">sie</td></tr><tr><td align="center">Sie</td><td align="center">Ihr</td><td align="center">Sie</td></tr><tr><td align="center">wer</td><td align="center">wessen</td><td align="center">wen</td></tr></tbody></table><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>详见 <a href="./39095.html#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%BB%E5%8F%96%E7%9A%84%E9%97%AE%E9%A2%98">关于字符串读取的问题</a></p><h2 id="Feeling"><a href="#Feeling" class="headerlink" title="Feeling"></a>Feeling</h2><p>最近头又有点晕，不会高血压了吧😢。</p><p>要打印<a href="ACM-ICPC_Templates_201805.pdf">ACM的板子</a>了，200多页，好贵</p>]]></content>
     
     
     
@@ -24,8 +24,8 @@
   
   <entry>
     <title>杂题小点</title>
-    <link href="/2024/10/17/%E6%9D%82%E9%A2%98%E5%B0%8F%E7%82%B9/"/>
-    <url>/2024/10/17/%E6%9D%82%E9%A2%98%E5%B0%8F%E7%82%B9/</url>
+    <link href="/posts/39095.html"/>
+    <url>/posts/39095.html</url>
     
     <content type="html"><![CDATA[<h2 id="关于字符串读取的问题"><a href="#关于字符串读取的问题" class="headerlink" title="关于字符串读取的问题"></a>关于字符串读取的问题</h2><p>getline(std::cin,str) 读取到缓冲区<code>&#39;\n&#39;</code> 前的字符串。故在 <code>std::cin&gt;&gt;n&gt;&gt;m</code> 这样的代码后，第一次读到的会是空串。因此需要有</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(str==<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-built_in">getline</span>(std::cin,str);<br></code></pre></td></tr></table></figure><p>这样的代码</p>]]></content>
     
@@ -45,8 +45,8 @@
   
   <entry>
     <title>note-weblab-w0</title>
-    <link href="/2024/09/30/note-weblab/"/>
-    <url>/2024/09/30/note-weblab/</url>
+    <link href="/posts/16111.html"/>
+    <url>/posts/16111.html</url>
     
     <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><p><code>flex</code> 中，默认使用行排布</p></li><li><p><code>flex-grow</code> 控制单元大小</p></li><li><p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li></ol><h3 id="10-10"><a href="#10-10" class="headerlink" title="10.10"></a>10.10</h3><p>扩展不定数量多个元素时，可以使用 map() 进行。</p><ul><li><strong>Parentheses <code>()</code></strong>: Used for arrow functions. <strong>Implicit return</strong> statement if there’s only one expression.</li><li><strong>Curly Braces <code>&#123;&#125;</code></strong>: Used for regular function declarations. Explicit <code>return</code> statement needed.</li></ul>]]></content>
     
@@ -64,8 +64,8 @@
   
   <entry>
     <title>20240926</title>
-    <link href="/2024/09/26/20240926/"/>
-    <url>/2024/09/26/20240926/</url>
+    <link href="/posts/25421.html"/>
+    <url>/posts/25421.html</url>
     
     <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天到19:47只写了三道题，小问题属于是一点敏感度都没有。</p><p>先是一道贪心因为神奇的原因没做出来。</p><p>然后是优先队列可能多次取都没注意到。</p><p>服了。</p><p>但是上午还是把多项式理论往后推进了一些，该整整数学分析了。</p>]]></content>
     
@@ -83,8 +83,8 @@
   
   <entry>
     <title>20240923</title>
-    <link href="/2024/09/23/20240923/"/>
-    <url>/2024/09/23/20240923/</url>
+    <link href="/posts/24717.html"/>
+    <url>/posts/24717.html</url>
     
     <content type="html"><![CDATA[<h1 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h1><p>开局首绷：答案字符串不写换行，属于是一点竞赛记忆都不剩了。</p><p>不过正好，从头学起，把之前拉下的全补牢。</p><p>然后学习一下牛顿迭代，挺好写，爱写。</p><p>代码如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span><span class="hljs-comment">//some function</span></span><br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">df</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> <span class="hljs-comment">//the derivative of the function</span></span><br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">newtonIterate</span><span class="hljs-params">(<span class="hljs-type">double</span> eps=<span class="hljs-number">1e-7</span>,<span class="hljs-type">int</span> maxIt)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">double</span> curr = <span class="hljs-number">1.0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=maxIt;++i)<br>    &#123;<br>        <span class="hljs-type">double</span> fx = <span class="hljs-built_in">f</span>(curr);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(fx)&lt;eps)<br>            <span class="hljs-keyword">return</span> curr;<br>        <span class="hljs-type">double</span> dfx=<span class="hljs-built_in">df</span>(curr)<br>        <span class="hljs-keyword">if</span>(dfx==<span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        curr-=fx/dfx;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li>基本思想：</li><li>不断做切线，其与x轴相交的点x1一定比原来的点x0离零点更近，故可以不断逼近，得到所需精度的答案。</li></ul>]]></content>
     
@@ -102,8 +102,8 @@
   
   <entry>
     <title>tmp</title>
-    <link href="/2024/09/22/tmp/"/>
-    <url>/2024/09/22/tmp/</url>
+    <link href="/posts/28269.html"/>
+    <url>/posts/28269.html</url>
     
     <content type="html"><![CDATA[<h1 id="搞不懂"><a href="#搞不懂" class="headerlink" title="搞不懂"></a>搞不懂</h1><p>啦啦啦</p>]]></content>
     
@@ -115,10 +115,10 @@
   
   <entry>
     <title>20240922</title>
-    <link href="/2024/09/22/20240922/"/>
-    <url>/2024/09/22/20240922/</url>
+    <link href="/posts/41036.html"/>
+    <url>/posts/41036.html</url>
     
-    <content type="html"><![CDATA[<h1 id="回归辣"><a href="#回归辣" class="headerlink" title="回归辣"></a>回归辣</h1><h2 id="昨日总结"><a href="#昨日总结" class="headerlink" title="昨日总结"></a>昨日总结</h2><p>给昨天先做一下总结</p><ol><li>骑车到达尖岭沙滩，闻到了海的味道，舒服。</li><li>重建了博客，今后要多写多总结</li><li>复建CF，但是发现自己好菜啊。 另： 不开<code>long long</code> 见祖宗</li><li>早上看了看丘维声的高等代数。这才是好的大学老师的模样啊！</li></ol><p>大概就是这些了，今日事件晚上再更新。</p><p>下面是一些图片：</p><p><img src="/2024/09/22/20240922/cows.jpg" alt="牛"><br><img src="/2024/09/22/20240922/sea.jpg" alt="海"><br><img src="/2024/09/22/20240922/chair.jpg" alt="椅"><br><img src="/2024/09/22/20240922/sea.jpg" alt="花"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="回归辣"><a href="#回归辣" class="headerlink" title="回归辣"></a>回归辣</h1><h2 id="昨日总结"><a href="#昨日总结" class="headerlink" title="昨日总结"></a>昨日总结</h2><p>给昨天先做一下总结</p><ol><li>骑车到达尖岭沙滩，闻到了海的味道，舒服。</li><li>重建了博客，今后要多写多总结</li><li>复建CF，但是发现自己好菜啊。 另： 不开<code>long long</code> 见祖宗</li><li>早上看了看丘维声的高等代数。这才是好的大学老师的模样啊！</li></ol><p>大概就是这些了，今日事件晚上再更新。</p><p>下面是一些图片：</p><p><img src="/posts/41036/cows.jpg" alt="牛"><br><img src="/posts/41036/sea.jpg" alt="海"><br><img src="/posts/41036/chair.jpg" alt="椅"><br><img src="/posts/41036/sea.jpg" alt="花"></p>]]></content>
     
     
     
@@ -128,8 +128,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/2024/09/21/hello-world/"/>
-    <url>/2024/09/21/hello-world/</url>
+    <link href="/posts/16107.html"/>
+    <url>/posts/16107.html</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
