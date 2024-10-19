@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>20241019</title>
+    <link href="/posts/e21e6335.html"/>
+    <url>/posts/e21e6335.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="校赛总结"><a href="#校赛总结" class="headerlink" title="校赛总结"></a>校赛总结</h2><h3 id="成绩"><a href="#成绩" class="headerlink" title="成绩"></a>成绩</h3><p>银牌，做出了 A，B，D，G，J</p><h3 id="A-Boosting"><a href="#A-Boosting" class="headerlink" title="A Boosting"></a>A Boosting</h3><p>签到题。</p><h3 id="B-Burning"><a href="#B-Burning" class="headerlink" title="B Burning"></a>B Burning</h3><p>题意描述：你有许多绳子， <strong>1.不均匀 2.随时可以熄灭</strong> ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。</p><p>题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。</p><h3 id="C-Calendar"><a href="#C-Calendar" class="headerlink" title="C Calendar"></a>C Calendar</h3><p>大模拟，感觉没啥能说的</p><h3 id="D-Card"><a href="#D-Card" class="headerlink" title="D Card"></a>D Card</h3><p>水题，直接算即可</p><h3 id="E-Chatgpt"><a href="#E-Chatgpt" class="headerlink" title="E Chatgpt"></a>E Chatgpt</h3><p>题意描述：给定三个操作：</p><ul><li>注：所有的“显示字符串”意思均为显示 $\Sigma^{|S|}_{y&#x3D;1}S_iB^i mod 2^64, B&#x3D;131$ 哈希后的字符串异或和</li></ul><ol><li>添加一段新问答：1 Q A，显示Q与A</li><li>选择一个回答，添加一段问答：2. Q’ A’,显示所有已知问答</li><li>选择一个提问（Q），修改，给出新的回答，附在Q的上一条问答后</li></ol><p>可持久化数据结构的考察，可以用链表，没有写。</p><h3 id="F-Discrete"><a href="#F-Discrete" class="headerlink" title="F Discrete"></a>F Discrete</h3><p>题意：给定$m$，求$1~(m-1)^2$ 中有多少个数 $n$满足$n\equiv b (\mod m)$</p><p>不会QwQ</p><h3 id="G-DNS"><a href="#G-DNS" class="headerlink" title="G DNS"></a>G DNS</h3><p>水题，<code>map+vector</code> 随便写</p><h3 id="H-Configure-Network"><a href="#H-Configure-Network" class="headerlink" title="H Configure Network"></a>H Configure Network</h3><p>题意： 给定$n*n$矩阵,求从第一列到第最后一列，点权和恰好为$t$的路径</p><p>解法：双边搜索+bitset建桶。</p><p>好久不做题，想到了没敢写。该打。</p><h3 id="I-Teleport"><a href="#I-Teleport" class="headerlink" title="I Teleport"></a>I Teleport</h3><p>题意：给定n个坐标，要有n次$(0,0)-&gt;(x_i,y_i)-&gt;(0,0)$，但拥有传送门，1s送到距所在位置切比雪夫距离在$[l,r]$ 的点，$r\leq k$。最小化 $r-l+1$</p><p>没有做，考场上没有看。</p><h3 id="J-Three-Body"><a href="#J-Three-Body" class="headerlink" title="J Three Body"></a>J Three Body</h3><p>题意：求三个圆都覆盖到的面积</p><p>解法：计算几何板子</p><h3 id="K-Tree"><a href="#K-Tree" class="headerlink" title="K Tree"></a>K Tree</h3><p>题意：给定n组数据：fa l。fa为父亲的下标，l为长度。在第$i$行第$m$层（父节点及祖宗节点个数）长度为$l$的节点花费为$i*(m+l)$</p><p>做法：大概就是存长度和层数排序</p><h3 id="L-Tube"><a href="#L-Tube" class="headerlink" title="L Tube"></a>L Tube</h3><p>没看懂</p><h3 id="M-No-Left-Turn"><a href="#M-No-Left-Turn" class="headerlink" title="M No Left Turn"></a>M No Left Turn</h3><p>一道神奇的图论，没看懂</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>20241017</title>
     <link href="/posts/44381.html"/>
     <url>/posts/44381.html</url>
