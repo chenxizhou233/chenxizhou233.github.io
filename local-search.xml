@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>20241027</title>
+    <link href="/posts/2e8b1df1.html"/>
+    <url>/posts/2e8b1df1.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="WebLab-w8-9"><a href="#WebLab-w8-9" class="headerlink" title="WebLab w8,9"></a>WebLab w8,9</h2><p>学到了一些前端框架的开发习惯：</p><ol><li>container套container来实现排版效果</li><li>与数据库交互时，检查登录状态（isLoggedin）。</li><li>与Mongodb交互时的查找方法：新建一个json，里面写上键值，然后<code>.find(...).then(...)</code></li></ol><h3 id="一些感受"><a href="#一些感受" class="headerlink" title="一些感受"></a>一些感受</h3><p>ETH有点小寄。忙来忙去，现在看来，还是先找工，手里拿着钱，身上有些可以被剥削的价值，再去整这些润的事吧。</p><p>累了，也不太想花父母钱了………</p><p>ALL in 找工！</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>前端学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>20241019</title>
     <link href="/posts/e21e6335.html"/>
     <url>/posts/e21e6335.html</url>
@@ -11,6 +30,12 @@
     <content type="html"><![CDATA[<h2 id="校赛总结"><a href="#校赛总结" class="headerlink" title="校赛总结"></a>校赛总结</h2><h3 id="成绩"><a href="#成绩" class="headerlink" title="成绩"></a>成绩</h3><p>银牌，做出了 A，B，D，G，J</p><h3 id="A-Boosting"><a href="#A-Boosting" class="headerlink" title="A Boosting"></a>A Boosting</h3><p>签到题。</p><h3 id="B-Burning"><a href="#B-Burning" class="headerlink" title="B Burning"></a>B Burning</h3><p>题意描述：你有许多绳子， <strong>1.不均匀 2.随时可以熄灭</strong> ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。</p><p>题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。</p><h3 id="C-Calendar"><a href="#C-Calendar" class="headerlink" title="C Calendar"></a>C Calendar</h3><p>大模拟，感觉没啥能说的</p><h3 id="D-Card"><a href="#D-Card" class="headerlink" title="D Card"></a>D Card</h3><p>水题，直接算即可</p><h3 id="E-Chatgpt"><a href="#E-Chatgpt" class="headerlink" title="E Chatgpt"></a>E Chatgpt</h3><p>题意描述：给定三个操作：</p><ul><li>注：所有的“显示字符串”意思均为显示 $\Sigma^{|S|}_{y&#x3D;1}S_iB^i mod 2^64, B&#x3D;131$ 哈希后的字符串异或和</li></ul><ol><li>添加一段新问答：1 Q A，显示Q与A</li><li>选择一个回答，添加一段问答：2. Q’ A’,显示所有已知问答</li><li>选择一个提问（Q），修改，给出新的回答，附在Q的上一条问答后</li></ol><p>可持久化数据结构的考察，可以用链表，没有写。</p><h3 id="F-Discrete"><a href="#F-Discrete" class="headerlink" title="F Discrete"></a>F Discrete</h3><p>题意：给定$m$，求$1~(m-1)^2$ 中有多少个数 $n$满足$n\equiv b (\mod m)$</p><p>不会QwQ</p><h3 id="G-DNS"><a href="#G-DNS" class="headerlink" title="G DNS"></a>G DNS</h3><p>水题，<code>map+vector</code> 随便写</p><h3 id="H-Configure-Network"><a href="#H-Configure-Network" class="headerlink" title="H Configure Network"></a>H Configure Network</h3><p>题意： 给定$n*n$矩阵,求从第一列到第最后一列，点权和恰好为$t$的路径</p><p>解法：双边搜索+bitset建桶。</p><p>好久不做题，想到了没敢写。该打。</p><h3 id="I-Teleport"><a href="#I-Teleport" class="headerlink" title="I Teleport"></a>I Teleport</h3><p>题意：给定n个坐标，要有n次$(0,0)-&gt;(x_i,y_i)-&gt;(0,0)$，但拥有传送门，1s送到距所在位置切比雪夫距离在$[l,r]$ 的点，$r\leq k$。最小化 $r-l+1$</p><p>没有做，考场上没有看。</p><h3 id="J-Three-Body"><a href="#J-Three-Body" class="headerlink" title="J Three Body"></a>J Three Body</h3><p>题意：求三个圆都覆盖到的面积</p><p>解法：计算几何板子</p><h3 id="K-Tree"><a href="#K-Tree" class="headerlink" title="K Tree"></a>K Tree</h3><p>题意：给定n组数据：fa l。fa为父亲的下标，l为长度。在第$i$行第$m$层（父节点及祖宗节点个数）长度为$l$的节点花费为$i*(m+l)$</p><p>做法：大概就是存长度和层数排序</p><h3 id="L-Tube"><a href="#L-Tube" class="headerlink" title="L Tube"></a>L Tube</h3><p>没看懂</p><h3 id="M-No-Left-Turn"><a href="#M-No-Left-Turn" class="headerlink" title="M No Left Turn"></a>M No Left Turn</h3><p>一道神奇的图论，没看懂</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>ACM</tag>
+      
+    </tags>
     
   </entry>
   
@@ -21,7 +46,7 @@
     <link href="/posts/44381.html"/>
     <url>/posts/44381.html</url>
     
-    <content type="html"><![CDATA[<h2 id="Deutsch"><a href="#Deutsch" class="headerlink" title="Deutsch"></a>Deutsch</h2><p>学习了第四格的人称代词：</p><table><thead><tr><th align="center">第一格</th><th align="center">物主代词</th><th align="center">第四格</th></tr></thead><tbody><tr><td align="center">ich</td><td align="center">mein</td><td align="center">mich</td></tr><tr><td align="center">du</td><td align="center">dein</td><td align="center">dich</td></tr><tr><td align="center">er</td><td align="center">sein</td><td align="center">ihn</td></tr><tr><td align="center">sie</td><td align="center">ihr</td><td align="center">sie</td></tr><tr><td align="center">es</td><td align="center">sein</td><td align="center">es</td></tr><tr><td align="center">wir</td><td align="center">unser</td><td align="center">uns</td></tr><tr><td align="center">ihr</td><td align="center">euer</td><td align="center">euch</td></tr><tr><td align="center">sie</td><td align="center">sein</td><td align="center">sie</td></tr><tr><td align="center">Sie</td><td align="center">Ihr</td><td align="center">Sie</td></tr><tr><td align="center">wer</td><td align="center">wessen</td><td align="center">wen</td></tr></tbody></table><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>详见 <a href="./39095.html#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%BB%E5%8F%96%E7%9A%84%E9%97%AE%E9%A2%98">关于字符串读取的问题</a></p><h2 id="Feeling"><a href="#Feeling" class="headerlink" title="Feeling"></a>Feeling</h2><p>最近头又有点晕，不会高血压了吧😢。</p><p>要打印<a href="ACM-ICPC_Templates_201805.pdf">ACM的板子</a>了，200多页，好贵</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Deutsch"><a href="#Deutsch" class="headerlink" title="Deutsch"></a>Deutsch</h2><p>学习了第四格的人称代词：</p><table><thead><tr><th align="center">第一格</th><th align="center">物主代词</th><th align="center">第四格</th></tr></thead><tbody><tr><td align="center">ich</td><td align="center">mein</td><td align="center">mich</td></tr><tr><td align="center">du</td><td align="center">dein</td><td align="center">dich</td></tr><tr><td align="center">er</td><td align="center">sein</td><td align="center">ihn</td></tr><tr><td align="center">sie</td><td align="center">ihr</td><td align="center">sie</td></tr><tr><td align="center">es</td><td align="center">sein</td><td align="center">es</td></tr><tr><td align="center">wir</td><td align="center">unser</td><td align="center">uns</td></tr><tr><td align="center">ihr</td><td align="center">euer</td><td align="center">euch</td></tr><tr><td align="center">sie</td><td align="center">sein</td><td align="center">sie</td></tr><tr><td align="center">Sie</td><td align="center">Ihr</td><td align="center">Sie</td></tr><tr><td align="center">wer</td><td align="center">wessen</td><td align="center">wen</td></tr></tbody></table><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>详见 <a href="./39095.html#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%BB%E5%8F%96%E7%9A%84%E9%97%AE%E9%A2%98">关于字符串读取的问题</a></p><h2 id="Feeling"><a href="#Feeling" class="headerlink" title="Feeling"></a>Feeling</h2><p>最近头又有点晕，不会高血压了吧😢。</p><p>要打印<a href="ACM-ICPC_Templates_201805.pdf">ACM的板子</a>了，200多页，好贵</p><p>更：好像才40多，还能接受。</p>]]></content>
     
     
     
@@ -61,7 +86,7 @@
     <link href="/posts/16111.html"/>
     <url>/posts/16111.html</url>
     
-    <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><p><code>flex</code> 中，默认使用行排布</p></li><li><p><code>flex-grow</code> 控制单元大小</p></li><li><p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li></ol><h3 id="10-10"><a href="#10-10" class="headerlink" title="10.10"></a>10.10</h3><p>扩展不定数量多个元素时，可以使用 map() 进行。</p><ul><li><strong>Parentheses <code>()</code></strong>: Used for arrow functions. <strong>Implicit return</strong> statement if there’s only one expression.</li><li><strong>Curly Braces <code>&#123;&#125;</code></strong>: Used for regular function declarations. Explicit <code>return</code> statement needed.</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><p><code>flex</code> 中，默认使用行排布</p></li><li><p><code>flex-grow</code> 控制单元大小</p></li><li><p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li></ol><h3 id="10-10"><a href="#10-10" class="headerlink" title="10.10"></a>10.10</h3><p>扩展不定数量多个元素时，可以使用 map() 进行。</p><ul><li><strong>Parentheses <code>()</code></strong>: Used for arrow functions. <strong>Implicit return</strong> statement if there’s only one expression.</li><li><strong>Curly Braces <code>&#123;&#125;</code></strong>: Used for regular function declarations. Explicit <code>return</code> statement needed.</li></ul><h3 id="10-27"><a href="#10-27" class="headerlink" title="10.27"></a>10.27</h3><p>学到了一些前端框架的开发习惯：</p><ol><li>container套container来实现排版效果</li><li>与数据库交互时，检查登录状态（isLoggedin）。</li><li>与Mongodb交互时的查找方法：新建一个json，里面写上键值，然后<code>.find(...).then(...)</code></li></ol><h3 id="10-28"><a href="#10-28" class="headerlink" title="10.28"></a>10.28</h3><p>GET&#x2F;POST 解决客户端与服务器通讯<br>Socket解决服务器与客户端通信</p>]]></content>
     
     
     
