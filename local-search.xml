@@ -4,11 +4,30 @@
   
   
   <entry>
+    <title>ITCS</title>
+    <link href="/posts/85db524f.html"/>
+    <url>/posts/85db524f.html</url>
+    
+    <content type="html"><![CDATA[<p>快到期末周了，为自己的Cheat Sheet做点准备</p><h2 id="Naive-Set-Theory"><a href="#Naive-Set-Theory" class="headerlink" title="Naive Set Theory"></a>Naive Set Theory</h2><p>感觉唯一要看的是两个集合的power和一个证明过程。</p><p>CaO，一翻Slide发现还有几个定义要说。</p><h3 id="几个定义"><a href="#几个定义" class="headerlink" title="几个定义"></a>几个定义</h3><p>$\binom{A}{k}&#x3D;{X\subseteq A: |X|&#x3D;k}$</p><p>$B^A&#x3D;{f: A\to B}$</p><p>$a\space R \space  b$ infixnotation for $(a,b)\in R$</p><h3 id="一个证明"><a href="#一个证明" class="headerlink" title="一个证明"></a>一个证明</h3><p><font color='red'>Theorem</font>: For every set $A$ it is <strong>not</strong> the case that $|2^A|\le |A|$ </p><p>Proof: <font color=#39c5bb>$h$</font>$:\to$<font color=#39c5bb>$2^A$</font>, we need to show that <font color=#39c5bb>$h$</font> is not a surjection.</p><p>i.e. given $h$ we need to find some <font color=#39c5bb>$\Delta_h\in 2^A$</font> so that </p><p>$$<br>    \forall a\in A:h(a)\ne \Delta_h<br>$$</p><p>Use $\Delta_h&#x3D;{a\in A|a\not \in h(a)}$</p><p>For every $a\in A$ the sets $h(a)$ and $\Delta_h$ differ in element $a$.</p><h3 id="经典方法"><a href="#经典方法" class="headerlink" title="经典方法"></a>经典方法</h3><p>康托对角化</p><h2 id="Words-Strings-Language"><a href="#Words-Strings-Language" class="headerlink" title="Words, Strings, Language"></a>Words, Strings, Language</h2><h3 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h3><p>$\Sigma\dots$ finitset “Alphabet”<br>$\Sigma^k\dots$ ordered k-tuples over $\Sigma$ $\quad w&#x3D;(a_1,a_2,\dots,a_k)$<br>$\quad\quad\quad$words of length $k\quad$ $w&#x3D;a_1a_2\dots a_k \qquad |w|&#x3D;k$<br>$\epsilon \qquad$ empty word<br>$\Sigma^*\quad \Sigma^+$ all finite string and all finite non-empty string</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>理论计算机</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>东方学读书笔记</title>
     <link href="/posts/2fd61a7e.html"/>
     <url>/posts/2fd61a7e.html</url>
     
-    <content type="html"><![CDATA[<h2 id="绪论部分"><a href="#绪论部分" class="headerlink" title="绪论部分"></a>绪论部分</h2><p>几个前提：</p><ul><li>东西方并不是自然的存在，不仅存在于自然中</li><li>东方本质上不存在是错的</li><li>聊东方学不能只聊东方学。不研究双方力量关系，权力结构，观念等就无法全面认识东方学。</li><li>东方学并不只是虚妄之语，而是几个世纪以来文化和实权等的积累。</li></ul><p><strong>霸权（hegemony）</strong>：社会中总有一些文化形式对其他的文化形式可以产生支配。</p><p>为方便后文阐述，提到了当代现实的三个方面：</p><ol><li>纯粹知识与政治知识的区分：认为“纯粹”知识不政治忽视了产生知识时的政治情景-&gt;知人论世，谈论知识离不开背景</li><li>方法论：说明了主要选取英法的材料进行研究的原因与心路历程</li><li>个人层面：引用葛兰西《狱中笔记》“批判性思考的起点是认识到你到底是谁，认识到‘认识你自己’也是一种历史过程的产物”。</li></ol><p>“Sie können sich nicht vertreten, sie müssen vertreten werden”<br>–卡尔·马克思《路易·波拿巴的雾月十八》</p><h2 id="第一章：东方学的范围"><a href="#第一章：东方学的范围" class="headerlink" title="第一章：东方学的范围"></a>第一章：东方学的范围</h2><h3 id="1-认识东方"><a href="#1-认识东方" class="headerlink" title="1. 认识东方"></a>1. 认识东方</h3><p>对东方的认识，是经过西方的一整套机制与方法论得以实现的，是“需要西方的正确研究的”，因而东方在出现时必定会被“某种支配性的框架所控制和表述”。</p><p>结果：二元对立，武断的描述</p><h3 id="2-东方化东方"><a href="#2-东方化东方" class="headerlink" title="2.东方化东方"></a>2.东方化东方</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="绪论部分"><a href="#绪论部分" class="headerlink" title="绪论部分"></a>绪论部分</h2><p>几个前提：</p><ul><li>东西方并不是自然的存在，不仅存在于自然中</li><li>东方本质上不存在是错的</li><li>聊东方学不能只聊东方学。不研究双方力量关系，权力结构，观念等就无法全面认识东方学。</li><li>东方学并不只是虚妄之语，而是几个世纪以来文化和实权等的积累。</li></ul><p><strong>霸权（hegemony）</strong>：社会中总有一些文化形式对其他的文化形式可以产生支配。</p><p>为方便后文阐述，提到了当代现实的三个方面：</p><ol><li>纯粹知识与政治知识的区分：认为“纯粹”知识不政治忽视了产生知识时的政治情景-&gt;知人论世，谈论知识离不开背景</li><li>方法论：说明了主要选取英法的材料进行研究的原因与心路历程</li><li>个人层面：引用葛兰西《狱中笔记》“批判性思考的起点是认识到你到底是谁，认识到‘认识你自己’也是一种历史过程的产物”。</li></ol><p>“Sie können sich nicht vertreten, sie müssen vertreten werden”<br>–卡尔·马克思《路易·波拿巴的雾月十八》</p><h2 id="第一章：东方学的范围"><a href="#第一章：东方学的范围" class="headerlink" title="第一章：东方学的范围"></a>第一章：东方学的范围</h2><h3 id="1-认识东方"><a href="#1-认识东方" class="headerlink" title="1. 认识东方"></a>1. 认识东方</h3><p>对东方的认识，是经过西方的一整套机制与方法论得以实现的，是“需要西方的正确研究的”，因而东方在出现时必定会被“某种支配性的框架所控制和表述”。</p><p>结果：二元对立，武断的描述</p><h3 id="2-东方化东方"><a href="#2-东方化东方" class="headerlink" title="2.东方化东方"></a>2.东方化东方</h3><p>更新计划：期末考完？反正没人看。感觉《东方学》的主要内容还是东方作为一个由力量不均衡所被制造出来的概念，在合理化压迫上做出了很大的贡献。</p>]]></content>
     
     
     
