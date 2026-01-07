@@ -19,12 +19,12 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="校赛总结成绩银牌，做出了 A，B，D，G，J A Boosting签到题。 B Burning题意描述：你有许多绳子， 1.不均匀 2.随时可以熄灭 ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。 题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。 C Calendar大模拟，感觉没啥能说的">
+    <meta name="description" content="校赛总结 成绩 银牌，做出了 A，B，D，G，J A Boosting 签到题。 B Burning 题意描述：你有许多绳子， 1.不均匀 2.随时可以熄灭 ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。 题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。 C Calendar 大模拟，感觉没">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20241019">
 <meta property="og:url" content="https://chenxizhou233.github.io/posts/e21e6335.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="校赛总结成绩银牌，做出了 A，B，D，G，J A Boosting签到题。 B Burning题意描述：你有许多绳子， 1.不均匀 2.随时可以熄灭 ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。 题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。 C Calendar大模拟，感觉没啥能说的">
+<meta property="og:description" content="校赛总结 成绩 银牌，做出了 A，B，D，G，J A Boosting 签到题。 B Burning 题意描述：你有许多绳子， 1.不均匀 2.随时可以熄灭 ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。 题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。 C Calendar 大模拟，感觉没">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-19T11:13:43.000Z">
 <meta property="article:modified_time" content="2026-01-03T08:42:56.970Z">
@@ -98,11 +98,7 @@
 
 
   
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -240,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          503 字
+          493 字
         
       </span>
     
@@ -310,36 +306,68 @@
             
               <div class="markdown-body">
                 
-                <h2 id="校赛总结"><a href="#校赛总结" class="headerlink" title="校赛总结"></a>校赛总结</h2><h3 id="成绩"><a href="#成绩" class="headerlink" title="成绩"></a>成绩</h3><p>银牌，做出了 A，B，D，G，J</p>
-<h3 id="A-Boosting"><a href="#A-Boosting" class="headerlink" title="A Boosting"></a>A Boosting</h3><p>签到题。</p>
-<h3 id="B-Burning"><a href="#B-Burning" class="headerlink" title="B Burning"></a>B Burning</h3><p>题意描述：你有许多绳子， <strong>1.不均匀 2.随时可以熄灭</strong> ，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。</p>
-<p>题解： 取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。</p>
-<h3 id="C-Calendar"><a href="#C-Calendar" class="headerlink" title="C Calendar"></a>C Calendar</h3><p>大模拟，感觉没啥能说的</p>
-<h3 id="D-Card"><a href="#D-Card" class="headerlink" title="D Card"></a>D Card</h3><p>水题，直接算即可</p>
-<h3 id="E-Chatgpt"><a href="#E-Chatgpt" class="headerlink" title="E Chatgpt"></a>E Chatgpt</h3><p>题意描述：给定三个操作：</p>
+                <h2 id="校赛总结">校赛总结</h2>
+<h3 id="成绩">成绩</h3>
+<p>银牌，做出了 A，B，D，G，J</p>
+<h3 id="a-boosting">A Boosting</h3>
+<p>签到题。</p>
+<h3 id="b-burning">B Burning</h3>
+<p>题意描述：你有许多绳子， <strong>1.不均匀 2.随时可以熄灭</strong>
+，能烧1h。 给定时间（hh:mm:ss），请问是否可以烧出。</p>
+<p>题解：
+取两根绳子，A烧一头，B烧两头，当B烧完时熄灭A，可得到一根可以烧出15min的绳子C（两头烧）。最短时间为225s。据此判断即可。</p>
+<h3 id="c-calendar">C Calendar</h3>
+<p>大模拟，感觉没啥能说的</p>
+<h3 id="d-card">D Card</h3>
+<p>水题，直接算即可</p>
+<h3 id="e-chatgpt">E Chatgpt</h3>
+<p>题意描述：给定三个操作：</p>
 <ul>
-<li>注：所有的“显示字符串”意思均为显示 $\Sigma^{|S|}_{y&#x3D;1}S_iB^i mod 2^64, B&#x3D;131$ 哈希后的字符串异或和</li>
+<li>注：所有的“显示字符串”意思均为显示 <span
+class="math inline"><em>Σ</em><sub><em>y</em> = 1</sub><sup>|<em>S</em>|</sup><em>S</em><sub><em>i</em></sub><em>B</em><sup><em>i</em></sup><em>m</em><em>o</em><em>d</em>2<sup>64</sup>, <em>B</em> = 131</span>
+哈希后的字符串异或和</li>
 </ul>
-<ol>
+<ol type="1">
 <li>添加一段新问答：1 Q A，显示Q与A</li>
 <li>选择一个回答，添加一段问答：2. Q’ A’,显示所有已知问答</li>
 <li>选择一个提问（Q），修改，给出新的回答，附在Q的上一条问答后</li>
 </ol>
 <p>可持久化数据结构的考察，可以用链表，没有写。</p>
-<h3 id="F-Discrete"><a href="#F-Discrete" class="headerlink" title="F Discrete"></a>F Discrete</h3><p>题意：给定$m$，求$1~(m-1)^2$ 中有多少个数 $n$满足$n\equiv b (\mod m)$</p>
+<h3 id="f-discrete">F Discrete</h3>
+<p>题意：给定<span class="math inline"><em>m</em></span>，求<span
+class="math inline">1 (<em>m</em> − 1)<sup>2</sup></span> 中有多少个数
+<span class="math inline"><em>n</em></span>满足<span
+class="math inline"><em>n</em> ≡ <em>b</em>( mod  <em>m</em>)</span></p>
 <p>不会QwQ</p>
-<h3 id="G-DNS"><a href="#G-DNS" class="headerlink" title="G DNS"></a>G DNS</h3><p>水题，<code>map+vector</code> 随便写</p>
-<h3 id="H-Configure-Network"><a href="#H-Configure-Network" class="headerlink" title="H Configure Network"></a>H Configure Network</h3><p>题意： 给定$n*n$矩阵,求从第一列到第最后一列，点权和恰好为$t$的路径</p>
+<h3 id="g-dns">G DNS</h3>
+<p>水题，<code>map+vector</code> 随便写</p>
+<h3 id="h-configure-network">H Configure Network</h3>
+<p>题意： 给定<span
+class="math inline"><em>n</em> * <em>n</em></span>矩阵,求从第一列到第最后一列，点权和恰好为<span
+class="math inline"><em>t</em></span>的路径</p>
 <p>解法：双边搜索+bitset建桶。</p>
 <p>好久不做题，想到了没敢写。该打。</p>
-<h3 id="I-Teleport"><a href="#I-Teleport" class="headerlink" title="I Teleport"></a>I Teleport</h3><p>题意：给定n个坐标，要有n次$(0,0)-&gt;(x_i,y_i)-&gt;(0,0)$，但拥有传送门，1s送到距所在位置切比雪夫距离在$[l,r]$ 的点，$r\leq k$。最小化 $r-l+1$</p>
+<h3 id="i-teleport">I Teleport</h3>
+<p>题意：给定n个坐标，要有n次<span
+class="math inline">(0, 0)− &gt; (<em>x</em><sub><em>i</em></sub>, <em>y</em><sub><em>i</em></sub>)− &gt; (0, 0)</span>，但拥有传送门，1s送到距所在位置切比雪夫距离在<span
+class="math inline">[<em>l</em>, <em>r</em>]</span> 的点，<span
+class="math inline"><em>r</em> ≤ <em>k</em></span>。最小化 <span
+class="math inline"><em>r</em> − <em>l</em> + 1</span></p>
 <p>没有做，考场上没有看。</p>
-<h3 id="J-Three-Body"><a href="#J-Three-Body" class="headerlink" title="J Three Body"></a>J Three Body</h3><p>题意：求三个圆都覆盖到的面积</p>
+<h3 id="j-three-body">J Three Body</h3>
+<p>题意：求三个圆都覆盖到的面积</p>
 <p>解法：计算几何板子</p>
-<h3 id="K-Tree"><a href="#K-Tree" class="headerlink" title="K Tree"></a>K Tree</h3><p>题意：给定n组数据：fa l。fa为父亲的下标，l为长度。在第$i$行第$m$层（父节点及祖宗节点个数）长度为$l$的节点花费为$i*(m+l)$</p>
+<h3 id="k-tree">K Tree</h3>
+<p>题意：给定n组数据：fa l。fa为父亲的下标，l为长度。在第<span
+class="math inline"><em>i</em></span>行第<span
+class="math inline"><em>m</em></span>层（父节点及祖宗节点个数）长度为<span
+class="math inline"><em>l</em></span>的节点花费为<span
+class="math inline"><em>i</em> * (<em>m</em> + <em>l</em>)</span></p>
 <p>做法：大概就是存长度和层数排序</p>
-<h3 id="L-Tube"><a href="#L-Tube" class="headerlink" title="L Tube"></a>L Tube</h3><p>没看懂</p>
-<h3 id="M-No-Left-Turn"><a href="#M-No-Left-Turn" class="headerlink" title="M No Left Turn"></a>M No Left Turn</h3><p>一道神奇的图论，没看懂</p>
+<h3 id="l-tube">L Tube</h3>
+<p>没看懂</p>
+<h3 id="m-no-left-turn">M No Left Turn</h3>
+<p>一道神奇的图论，没看懂</p>
 
                 
               </div>
@@ -509,6 +537,21 @@
 
   
 
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 

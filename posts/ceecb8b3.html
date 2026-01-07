@@ -98,11 +98,7 @@
 
 
   
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -319,8 +315,14 @@
 <p>本来想到这里，还想去道个歉。一想才发现又自我为中心了。你以为你是老酒越品越香，人家能记住你，实际只是一个小丑，晦气。不打扰才是最大的礼貌吧。如今她在中山大学，祝她能从此人生天天向上，生活幸福啊。感谢曾经的出现，照亮了我那两年时光。当初的我，心理还是太不正常了。</p>
 <p>总而言之，想是真的想啊，但是想想我干的那些事，我或许还是维持一个和死了一样的状态更加合适吧。</p>
 <p>哎，结尾想写诗，水平不足，只能ai来凑了。感觉写这种公式化的东西，ai很好用啊。</p>
-<p>《虞美人·释怀》<br>梦中桥畔风微起，<br>往事都如水。<br>回看年少自多情，<br>笑我当时，心事太分明。</p>
-<p>醒来却觉人间好，<br>旧影随风了。<br>从今不与怨和愁，<br>但愿前程，彼此各安悠。</p>
+<p>《虞美人·释怀》 梦中桥畔风微起，<br />
+往事都如水。<br />
+回看年少自多情，<br />
+笑我当时，心事太分明。</p>
+<p>醒来却觉人间好，<br />
+旧影随风了。<br />
+从今不与怨和愁，<br />
+但愿前程，彼此各安悠。</p>
 <!-- flag of hidden posts -->
                 
               </div>
@@ -478,6 +480,21 @@
 
   
 
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 
