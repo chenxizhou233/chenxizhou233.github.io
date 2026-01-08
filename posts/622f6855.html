@@ -19,22 +19,25 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="快到期末周了，为自己的Cheat Sheet做点准备 Naive Set Theory 感觉唯一要看的是两个集合的power和一个证明过程。 CaO，一翻Slide发现还有几个定义要说。 几个定义 $&#x3D;{X $  ⊆ A : |X| &#x3D; k} BA &#x3D; {f : A → B} a  R  b infixnotation for (a, b) ∈ R 一个证明 Theorem: For every">
+    <meta name="description" content="感觉自己下半学期学的有点问题，写点笔记复习一下 感觉下半学期的重点是编译原理，主要可以分为这么几个部分：  Lexer: 把程序转化为Token Parser: 把Token转化为语言的数据类型 Elaborator: 静态类型检查 Evaluator: 求值  自我感觉1.3.4.掌握的还行，Paser还是有点不明白。 以及3.4.的Derivation Tree还要再记一下表示方法。 编译原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ITCS">
-<meta property="og:url" content="https://chenxizhou233.github.io/posts/85db524f.html">
+<meta property="og:title" content="Prog1-Part2">
+<meta property="og:url" content="https://chenxizhou233.github.io/posts/622f6855.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="快到期末周了，为自己的Cheat Sheet做点准备 Naive Set Theory 感觉唯一要看的是两个集合的power和一个证明过程。 CaO，一翻Slide发现还有几个定义要说。 几个定义 $&#x3D;{X $  ⊆ A : |X| &#x3D; k} BA &#x3D; {f : A → B} a  R  b infixnotation for (a, b) ∈ R 一个证明 Theorem: For every">
+<meta property="og:description" content="感觉自己下半学期学的有点问题，写点笔记复习一下 感觉下半学期的重点是编译原理，主要可以分为这么几个部分：  Lexer: 把程序转化为Token Parser: 把Token转化为语言的数据类型 Elaborator: 静态类型检查 Evaluator: 求值  自我感觉1.3.4.掌握的还行，Paser还是有点不明白。 以及3.4.的Derivation Tree还要再记一下表示方法。 编译原理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-07T12:40:48.000Z">
-<meta property="article:modified_time" content="2026-01-07T21:39:27.283Z">
+<meta property="og:image" content="https://chenxizhou233.github.io/posts/SS.png">
+<meta property="og:image" content="https://chenxizhou233.github.io/posts/DApp.png">
+<meta property="article:published_time" content="2026-01-08T02:00:30.000Z">
+<meta property="article:modified_time" content="2026-01-08T10:04:29.139Z">
 <meta property="article:author" content="Xizhou Chen">
-<meta property="article:tag" content="理论计算机">
+<meta property="article:tag" content="函数式编程">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chenxizhou233.github.io/posts/SS.png">
   
   
   
-  <title>ITCS - Fulereneee</title>
+  <title>Prog1-Part2 - Fulereneee</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ITCS"></span>
+            <span id="subtitle" data-typed-text="Prog1-Part2"></span>
           
         </div>
 
@@ -224,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-07 20:40" pubdate>
-          2026年1月7日 晚上
+        <time datetime="2026-01-08 10:00" pubdate>
+          2026年1月8日 上午
         </time>
       </span>
     
@@ -236,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          650 字
+          429 字
         
       </span>
     
@@ -247,7 +250,7 @@
         
         
         
-          6 分钟
+          4 分钟
         
       </span>
     
@@ -293,12 +296,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ITCS</h1>
+            <h1 id="seo-header">Prog1-Part2</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年1月8日 凌晨
+                    本文最后更新于 2026年1月8日 晚上
                   
                 
               </p>
@@ -306,140 +309,53 @@
             
               <div class="markdown-body">
                 
-                <p>快到期末周了，为自己的Cheat Sheet做点准备</p>
-<h2 id="naive-set-theory">Naive Set Theory</h2>
-<p>感觉唯一要看的是两个集合的power和一个证明过程。</p>
-<p>CaO，一翻Slide发现还有几个定义要说。</p>
-<h3 id="几个定义">几个定义</h3>
-<p>$={X $ <span
-class="math inline"> ⊆ <em>A</em> : |<em>X</em>| = <em>k</em>}</span></p>
-<p><span
-class="math inline"><em>B</em><sup><em>A</em></sup> = {<em>f</em> : <em>A</em> → <em>B</em>}</span></p>
-<p><span class="math inline"><em>a</em>  <em>R</em>  <em>b</em></span>
-infixnotation for <span
-class="math inline">(<em>a</em>, <em>b</em>) ∈ <em>R</em></span></p>
-<h3 id="一个证明">一个证明</h3>
-<p><font color='red'>Theorem</font>: For every set <span
-class="math inline"><em>A</em></span> it is <strong>not</strong> the
-case that <span
-class="math inline">|2<sup><em>A</em></sup>| ≤ |<em>A</em>|</span></p>
-<p>Proof: <font color=#39c5bb><span
-class="math inline"><em>h</em></span></font><span
-class="math inline"> : →</span><font color=#39c5bb><span
-class="math inline">2<sup><em>A</em></sup></span></font>, we need to
-show that <font color=#39c5bb><span
-class="math inline"><em>h</em></span></font> is not a surjection.</p>
-<p>i.e. given <span class="math inline"><em>h</em></span> we need to
-find some <font color=#39c5bb><span
-class="math inline"><em>Δ</em><sub><em>h</em></sub> ∈ 2<sup><em>A</em></sup></span></font>
-so that</p>
-<p><span
-class="math display">∀<em>a</em> ∈ <em>A</em> : <em>h</em>(<em>a</em>) ≠ <em>Δ</em><sub><em>h</em></sub></span></p>
-<p>Use <span
-class="math inline"><em>Δ</em><sub><em>h</em></sub> = {<em>a</em> ∈ <em>A</em>|<em>a</em> ∉ <em>h</em>(<em>a</em>)}</span></p>
-<p>For every <span class="math inline"><em>a</em> ∈ <em>A</em></span>
-the sets <span class="math inline"><em>h</em>(<em>a</em>)</span> and
-<span class="math inline"><em>Δ</em><sub><em>h</em></sub></span> differ
-in element <span class="math inline"><em>a</em></span>.</p>
-<h3 id="经典方法">经典方法</h3>
-<p>康托对角化</p>
-<h2 id="words-strings-language">Words, Strings, Language</h2>
-<h3 id="一些定义">一些定义</h3>
-<p><span class="math inline"><em>Σ</em>…</span> finitset “Alphabet”</p>
-<p><span class="math inline"><em>Σ</em><sup><em>k</em></sup>…</span>
-ordered k-tuples over <span class="math inline"><em>Σ</em></span> <span
-class="math inline">  <em>w</em> = (<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, …, <em>a</em><sub><em>k</em></sub>)</span></p>
-<p><span class="math inline">      </span>words of length <span
-class="math inline"><em>k</em>  </span> <span
-class="math inline"><em>w</em> = <em>a</em><sub>1</sub><em>a</em><sub>2</sub>…<em>a</em><sub><em>k</em></sub>   |<em>w</em>| = <em>k</em></span></p>
-<p><span class="math inline"><em>ϵ</em>   </span> empty word</p>
-<p><span
-class="math inline"><em>Σ</em><sup>*</sup>  <em>Σ</em><sup>+</sup></span>
-all finite string and all finite non-empty string</p>
-<p><span class="math inline">#<sub><em>a</em></sub>(<em>w</em>):</span>
-a在w中的出现次数</p>
-<p><span class="math inline"><em>L</em> ⊂ <em>Σ</em><sup>*</sup>…</span>
-“language” over <span class="math inline"><em>Σ</em></span></p>
-<h3 id="图灵机入门">图灵机入门</h3>
-<p>三类： FA，PDA，TM</p>
-<p>分别对应Chomsky的 Regular grammar，Context free grammar和Unrestricted
-Grammar</p>
-<h2 id="fa">FA</h2>
-<h3 id="记号">记号</h3>
-<p><span
-class="math inline"><em>Σ</em>  <em>Q</em>  <em>s</em> ∈ <em>Q</em>  <em>F</em> ⊂ <em>Q</em>  <em>Δ</em> ⊂ ((<em>Q</em> × <em>Σ</em>) × <em>Q</em>)</span></p>
-<p>分别代表： 字符集 状态集 起始状态 终止状态集
-Configuration(状态转移路径集？)：(当前状态，转移字符，转移后状态)</p>
-<p>Computing step relation <span
-class="math inline">⊢<sub><em>M</em></sub></span> on <span
-class="math inline"><em>K</em><sub><em>M</em></sub></span></p>
-<p><span
-class="math inline">∀<em>q</em> ∈ <em>Q</em>, <em>a</em> ∈ <em>Σ</em>, <em>u</em> ∈ <em>Σ</em><sup>*</sup> : (<em>q</em>, <em>a</em><em>u</em>)⊢<sub><em>M</em></sub>(<em>q</em><sup>′</sup>, <em>u</em>)
-iff
-(<em>q</em>, <em>a</em>, <em>q</em><sup>′</sup>) ∈ <em>Δ</em></span></p>
-<p><span class="math inline">⊢<sub><em>M</em></sub><sup>*</sup></span>
-on <span class="math inline"><em>K</em><sub><em>M</em></sub></span></p>
-<p>当有一个计算路径时，直接前面起始state，后面终止state.</p>
-<p>分为Deterministic 和 Non deterministic.</p>
-<h3 id="continuous-language">Continuous Language</h3>
-<p>是这门课教授为了教学创造的概念，但给的Lemma是通用的</p>
-<p>定义为 <span
-class="math inline"><em>F</em><sub><em>L</em></sub>(<em>w</em>) = {<em>a</em>|<em>a</em> ∈ <em>Σ</em>, <em>w</em><em>a</em> ∈ <em>L</em>}</span></p>
-<blockquote>
-<h4 id="theoremmyhill-nerode">Theorem(Myhill-Nerode)</h4>
-<p>L DFA language <span
-class="math inline"> ⇔ ℱ<sub><em>L</em></sub></span> is finite</p>
-</blockquote>
-<p>一般反着用：</p>
-<p><span class="math inline">ℱ<sub><em>L</em></sub></span>
-<strong>not</strong> finite <span class="math inline">⟹</span> L
-<strong>not</strong> DFA-language.</p>
-<p>证非REG可以找一组 <span
-class="math inline">{<em>w</em><sup>(<em>i</em>)</sup> ∈ <em>Σ</em><sup>*</sup>}</span>
-s.t <span
-class="math display"><em>F</em><sub><em>L</em></sub>(<em>w</em><sup>(<em>i</em>)</sup>) ≠ <em>F</em><sub><em>L</em></sub>(<em>w</em><sup>(<em>j</em>)</sup>)for
-<em>i</em> ≠ <em>j</em></span></p>
-<p>之后有Pumping Lemma了其实就没那么常用了。
-后面也知道DFA-language就是Regular Language</p>
-<h3 id="dfs-minimization">DFS Minimization</h3>
-<p>暴力算法：先按终态和末态分，然后每次检查每个划分中是否每个元素在每个可能输入下都会保持在同一分区，如果不是，将输入后的转移结果相同的状态再划分到一起</p>
-<h3 id="nfa转dfa">NFA转DFA</h3>
-<p>因为我一直和最小化搞混，就一起写了。 子集构造好难。</p>
-<blockquote>
-<p>定义：子集构造就是先对Q做一个powerset，然后将里面的元素作为新的Q’.再按这些子集之间的转移关系建立新的DFA。</p>
-</blockquote>
-<p>哎，期中考试这题一分不得。麻了。</p>
-<h3 id="pumping-lemma">Pumping Lemma</h3>
-<blockquote>
-<p>正着的形式： L REG <span class="math inline">⟹</span> <span
-class="math inline">∃<em>N</em> ∈ ℕ : ∀<em>u</em><em>v</em><em>w</em> ∈ <em>L</em>   ∃partition
-<em>v</em> = <em>x</em><em>y</em><em>z</em>   : ∀<em>i</em> ∈ ℕ : <em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em><em>w</em> ∈ <em>L</em></span></p>
-<p><span
-class="math inline">          |<em>v</em>| ≥ <em>N</em>        with0 &lt; |<em>y</em>| ≤ <em>N</em></span></p>
-</blockquote>
-<p>因为它是必要不充分的，一般反着用判断非REG： <em>Remark: 对于 over
-<strong>一个字母</strong>的language，fulfilling the pumping lemma is
-充要的</em> （我在写什么，蚌）</p>
-<blockquote>
-<p><span
-class="math inline">∀<em>N</em> ∈ ℕ : ∃<em>u</em><em>v</em><em>w</em> ∈ <em>L</em>   : ∀partition
-<em>v</em> = <em>x</em><em>y</em><em>z</em>   : ∃<em>i</em> ∈ ℕ : <em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∉ <em>L</em></span></p>
-<p><span
-class="math inline">          |<em>v</em>| ≥ <em>N</em>        with0 &lt; |<em>y</em>| ≤ <em>N</em></span></p>
-</blockquote>
-<p>可以用一种“玩游戏”的说法解释一下全称量词：</p>
-<p><span class="math inline">∀</span>对手选，自己无法控制 <span
-class="math inline">∃</span>自己选</p>
+                <p>感觉自己下半学期学的有点问题，写点笔记复习一下</p>
+<p>感觉下半学期的重点是编译原理，主要可以分为这么几个部分：</p>
 <ol type="1">
-<li>对手选<span class="math inline"><em>N</em></span>，你母鸡</li>
-<li>自己从L中选一个词，并自己确定uvw的划分，<span
-class="math inline">|<em>v</em>| ≥ <em>N</em></span></li>
-<li>对手选择v=xyz的划分方法，保证 <span
-class="math inline">0 &lt; |<em>y</em>| ≤ <em>N</em></span></li>
-<li>自己选择<span class="math inline"><em>i</em></span>使<span
-class="math inline"><em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em><em>w</em></span>不在L中</li>
+<li>Lexer: 把程序转化为Token</li>
+<li>Parser: 把Token转化为语言的数据类型</li>
+<li>Elaborator: 静态类型检查</li>
+<li>Evaluator: 求值</li>
 </ol>
-<p>这样就可以证L非REG了。</p>
+<p>自我感觉1.3.4.掌握的还行，Paser还是有点不明白。</p>
+<p>以及3.4.的Derivation Tree还要再记一下表示方法。</p>
+<p>编译原理这一块还是先拿课上的顺序进行整理：3.4.1.2.</p>
+<h2 id="编译原理">编译原理</h2>
+<h3 id="elaborator静态类型检查">Elaborator——静态类型检查</h3>
+<p>作为人类，可能能一步一步推导类型，但怎么让计算机做呢？</p>
+<p>仔细观察（bushi），可以抽象出来几条规则，这里拿latex抄一遍：</p>
+<p>渲染有问题，直接用图片了QwQ</p>
+<figure>
+<img src="SS.png" srcset="/img/loading.gif" lazyload alt="Static Semantics" />
+<figcaption aria-hidden="true">Static Semantics</figcaption>
+</figure>
+<p>这个还是比较好理解的，因为不涉及环境的变更，一点一点推导下去就可以了。</p>
+<h3 id="evaluator动态求值">Evaluator——动态求值</h3>
+<p>这里涉及环境的变更，所以语法上有些地方要注意。</p>
+<figure>
+<img src="DApp.png" srcset="/img/loading.gif" lazyload alt="DApp" />
+<figcaption aria-hidden="true">DApp</figcaption>
+</figure>
+<ol type="1">
+<li>函数要写成Tuple的形式</li>
+<li>新的环境要在最后表示出来</li>
+</ol>
+<h2 id="形式化的递归表达">形式化的递归表达</h2>
+<p>现在课上在讲这个，顺手写一下吧。</p>
+<h3 id="递归式的一种表示方法">递归式的一种表示方法</h3>
+<p>e.g.</p>
+<p><span
+class="math inline"><em>F</em><em>i</em><em>b</em>(<em>x</em>) = IF
+<em>x</em> &lt; 2 THEN <em>x</em> ELSE
+<em>F</em><em>i</em><em>b</em>(<em>x</em> − 1) + <em>F</em><em>i</em><em>b</em>(<em>x</em> − 2)</span></p>
+<p>可以表示为 <span class="math inline">IF <em>x</em> &lt; 2 THEN ⟨⟩
+ELSE ⟨<em>x</em> − 1, <em>x</em> − 2⟩</span></p>
+<h3 id="递归关系">递归关系</h3>
+<p>刚才的柿子中，<span class="math inline">⟨⟩</span> 中的东西叫Precedent
+Argument. 如果我们把当前参数和Precedent
+Argument中间连一条有向边，就构成的一个递归关系R。</p>
+<p>可以和之前的Termination Relation联系起来：你能terminate，
+这个递归才能结束。怎么判断能否Terminate呢，看这个function能不能在某种encoding下countable。</p>
 
                 
               </div>
@@ -452,7 +368,7 @@ class="math inline"><em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%90%86%E8%AE%BA%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="print-no-link">#理论计算机</a>
+        <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" class="print-no-link">#函数式编程</a>
       
     </div>
   
@@ -464,8 +380,8 @@ class="math inline"><em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ITCS</div>
-      <div>https://chenxizhou233.github.io/posts/85db524f.html</div>
+      <div>Prog1-Part2</div>
+      <div>https://chenxizhou233.github.io/posts/622f6855.html</div>
     </div>
     <div class="license-meta">
       
@@ -477,7 +393,7 @@ class="math inline"><em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月7日</div>
+          <div>2026年1月8日</div>
         </div>
       
       
@@ -509,18 +425,12 @@ class="math inline"><em>u</em><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/622f6855.html" title="Prog1-Part2">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Prog1-Part2</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/2fd61a7e.html" title="东方学读书笔记">
-                        <span class="hidden-mobile">东方学读书笔记</span>
+                      <a href="/posts/85db524f.html" title="ITCS">
+                        <span class="hidden-mobile">ITCS</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

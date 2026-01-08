@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Prog1-Part2</title>
+    <link href="/posts/622f6855.html"/>
+    <url>/posts/622f6855.html</url>
+    
+    <content type="html"><![CDATA[<p>感觉自己下半学期学的有点问题，写点笔记复习一下</p><p>感觉下半学期的重点是编译原理，主要可以分为这么几个部分：</p><ol type="1"><li>Lexer: 把程序转化为Token</li><li>Parser: 把Token转化为语言的数据类型</li><li>Elaborator: 静态类型检查</li><li>Evaluator: 求值</li></ol><p>自我感觉1.3.4.掌握的还行，Paser还是有点不明白。</p><p>以及3.4.的Derivation Tree还要再记一下表示方法。</p><p>编译原理这一块还是先拿课上的顺序进行整理：3.4.1.2.</p><h2 id="编译原理">编译原理</h2><h3 id="elaborator静态类型检查">Elaborator——静态类型检查</h3><p>作为人类，可能能一步一步推导类型，但怎么让计算机做呢？</p><p>仔细观察（bushi），可以抽象出来几条规则，这里拿latex抄一遍：</p><p>渲染有问题，直接用图片了QwQ</p><figure><img src="SS.png" alt="Static Semantics" /><figcaption aria-hidden="true">Static Semantics</figcaption></figure><p>这个还是比较好理解的，因为不涉及环境的变更，一点一点推导下去就可以了。</p><h3 id="evaluator动态求值">Evaluator——动态求值</h3><p>这里涉及环境的变更，所以语法上有些地方要注意。</p><figure><img src="DApp.png" alt="DApp" /><figcaption aria-hidden="true">DApp</figcaption></figure><ol type="1"><li>函数要写成Tuple的形式</li><li>新的环境要在最后表示出来</li></ol><h2 id="形式化的递归表达">形式化的递归表达</h2><p>现在课上在讲这个，顺手写一下吧。</p><h3 id="递归式的一种表示方法">递归式的一种表示方法</h3><p>e.g.</p><p><spanclass="math inline"><em>F</em><em>i</em><em>b</em>(<em>x</em>) = IF<em>x</em> &lt; 2 THEN <em>x</em> ELSE<em>F</em><em>i</em><em>b</em>(<em>x</em> − 1) + <em>F</em><em>i</em><em>b</em>(<em>x</em> − 2)</span></p><p>可以表示为 <span class="math inline">IF <em>x</em> &lt; 2 THEN ⟨⟩ELSE ⟨<em>x</em> − 1, <em>x</em> − 2⟩</span></p><h3 id="递归关系">递归关系</h3><p>刚才的柿子中，<span class="math inline">⟨⟩</span> 中的东西叫PrecedentArgument. 如果我们把当前参数和PrecedentArgument中间连一条有向边，就构成的一个递归关系R。</p><p>可以和之前的Termination Relation联系起来：你能terminate，这个递归才能结束。怎么判断能否Terminate呢，看这个function能不能在某种encoding下countable。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>函数式编程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ITCS</title>
     <link href="/posts/85db524f.html"/>
     <url>/posts/85db524f.html</url>
