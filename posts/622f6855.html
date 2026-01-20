@@ -26,14 +26,15 @@
 <meta property="og:site_name" content="Fulereneee">
 <meta property="og:description" content="感觉自己下半学期学的有点问题，写点笔记复习一下 感觉下半学期的重点是编译原理，主要可以分为这么几个部分：  Lexer: 把程序转化为Token Parser: 把Token转化为语言的数据类型 Elaborator: 静态类型检查 Evaluator: 求值  自我感觉1.3.4.掌握的还行，Paser还是有点不明白。 以及3.4.的Derivation Tree还要再记一下表示方法。 编译原理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://chenxizhou233.github.io/posts/SS.png">
-<meta property="og:image" content="https://chenxizhou233.github.io/posts/DApp.png">
+<meta property="og:image" content="https://chenxizhou233.github.io/posts/622f6855/SS.png">
+<meta property="og:image" content="https://chenxizhou233.github.io/posts/622f6855/DApp.png">
+<meta property="og:image" content="https://chenxizhou233.github.io/posts/622f6855/DAbs.png">
 <meta property="article:published_time" content="2026-01-08T02:00:30.000Z">
-<meta property="article:modified_time" content="2026-01-08T10:04:29.139Z">
+<meta property="article:modified_time" content="2026-01-15T10:54:33.984Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="函数式编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chenxizhou233.github.io/posts/SS.png">
+<meta name="twitter:image" content="https://chenxizhou233.github.io/posts/622f6855/SS.png">
   
   
   
@@ -101,7 +102,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -239,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          429 字
+          782 字
         
       </span>
     
@@ -250,7 +253,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -301,7 +304,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年1月8日 晚上
+                    本文最后更新于 2026年1月15日 晚上
                   
                 
               </p>
@@ -325,21 +328,29 @@
 <p>作为人类，可能能一步一步推导类型，但怎么让计算机做呢？</p>
 <p>仔细观察（bushi），可以抽象出来几条规则，这里拿latex抄一遍：</p>
 <p>渲染有问题，直接用图片了QwQ</p>
-<figure>
-<img src="SS.png" srcset="/img/loading.gif" lazyload alt="Static Semantics" />
-<figcaption aria-hidden="true">Static Semantics</figcaption>
-</figure>
+<img src="/posts/622f6855/SS.png" srcset="/img/loading.gif" lazyload class="" title="Static Semantics">
 <p>这个还是比较好理解的，因为不涉及环境的变更，一点一点推导下去就可以了。</p>
 <h3 id="evaluator动态求值">Evaluator——动态求值</h3>
 <p>这里涉及环境的变更，所以语法上有些地方要注意。</p>
-<figure>
-<img src="DApp.png" srcset="/img/loading.gif" lazyload alt="DApp" />
-<figcaption aria-hidden="true">DApp</figcaption>
-</figure>
+<img src="/posts/622f6855/DApp.png" srcset="/img/loading.gif" lazyload class="" title="DApp">
 <ol type="1">
 <li>函数要写成Tuple的形式</li>
 <li>新的环境要在最后表示出来</li>
 </ol>
+<img src="/posts/622f6855/DAbs.png" srcset="/img/loading.gif" lazyload class="" title="DAbs">
+<p>函数在Abs时候要写成Tuple形式。</p>
+<h3 id="lexertoken化">Lexer——Token化</h3>
+<p>这个没啥难的，直接字符串explode后match就可以</p>
+<h3
+id="parser把token处理为eval和elab能处理的形式">Parser——把Token处理为Eval和Elab能处理的形式</h3>
+<p>这里用的是Recursively Descending Parser
+主要思想就是先处理优先级低的，然后一步一步向下处理。
+这里用到了OCaml一个制造相互使用的函数的语法糖：and。
+就是可以前面先用这个函数，然后and 函数名=…补上。</p>
+<p>这里复习一下我一分不得的Mini Test题目：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs OCaml"><span class="hljs-keyword">type</span> token=<span class="hljs-type">HE</span>|<span class="hljs-type">HO</span>|<span class="hljs-type">LP</span>|<span class="hljs-type">RP</span>|<span class="hljs-type">SIM</span><br>;;<br><span class="hljs-keyword">type</span> exp=<span class="hljs-type">He</span>|<span class="hljs-type">Ho</span>|<span class="hljs-type">Sim</span> <span class="hljs-keyword">of</span> exp*exp<br>;;<br><span class="hljs-keyword">type</span> cexp ts=<br><span class="hljs-keyword">match</span> pty ts <span class="hljs-keyword">with</span><br>| t1, <span class="hljs-type">SIM</span> :: ts = <span class="hljs-keyword">let</span> t2,ts = cexp ts <span class="hljs-keyword">in</span> (<span class="hljs-type">Sim</span>(t1,t2),ts)<br>| p-&gt;p<br><span class="hljs-keyword">and</span> pty = <span class="hljs-keyword">function</span><br>| <span class="hljs-type">HE</span>::ts -&gt; (<span class="hljs-type">He</span>,ts)<br>| <span class="hljs-type">HO</span>::ts -&gt; (<span class="hljs-type">Ho</span>,ts)<br>| <span class="hljs-type">LP</span>::ts -&gt; <br>        <span class="hljs-keyword">let</span> t1,ts = cexp ts <span class="hljs-keyword">in</span><br>        <span class="hljs-keyword">let</span> ts = expect <span class="hljs-type">RP</span> ts <span class="hljs-keyword">in</span><br>        (t1,ts)<br>| _-&gt;failwith <span class="hljs-string">&quot;Not Valid&quot;</span><br></code></pre></td></tr></table></figure>
+<p>核心还是每次解析的时候尝试看看下层还有没有可以解析的，然后一层一层向下。</p>
+<p>核心就是Grammar，对每个非终结符总结一个替换方式然后按优先级逐个应用。</p>
 <h2 id="形式化的递归表达">形式化的递归表达</h2>
 <p>现在课上在讲这个，顺手写一下吧。</p>
 <h3 id="递归式的一种表示方法">递归式的一种表示方法</h3>
@@ -356,6 +367,19 @@ Argument. 如果我们把当前参数和Precedent
 Argument中间连一条有向边，就构成的一个递归关系R。</p>
 <p>可以和之前的Termination Relation联系起来：你能terminate，
 这个递归才能结束。怎么判断能否Terminate呢，看这个function能不能在某种encoding下countable。</p>
+<h3
+id="证明函数定义和数学上的函数表达的是一个东西"><em>证明</em>函数定义和数学上的函数表达的是一个东西</h3>
+<p>这一部分主要是数学上的证明，跟编程知识就没啥关系了。</p>
+<p>但是minitest里给出了需要的证明方式：</p>
+<h4 id="证明dom-somethingsubseteqdom-f">1.证明Dom something<span
+class="math inline">⊆</span>Dom f</h4>
+<p>给出Termination Function， 证明两个Dom都对这个function terminate，
+所以有这个关系</p>
+<h4 id="证明数学上一致">2.证明数学上一致</h4>
+<p>对每个条件分支，做一下和Mathematical induction类似的变形。</p>
+<h3 id="structural-induction">Structural Induction</h3>
+<p>Given a claim, for each possible arg, make the claim a induction
+form.</p>
 
                 
               </div>
@@ -424,6 +448,12 @@ Argument中间连一条有向边，就构成的一个递归关系R。</p>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/14072394.html" title="MathI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MathI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
