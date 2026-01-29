@@ -19,26 +19,22 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="感觉自己下半学期学的有点问题，写点笔记复习一下 感觉下半学期的重点是编译原理，主要可以分为这么几个部分：  Lexer: 把程序转化为Token Parser: 把Token转化为语言的数据类型 Elaborator: 静态类型检查 Evaluator: 求值  自我感觉1.3.4.掌握的还行，Paser还是有点不明白。 以及3.4.的Derivation Tree还要再记一下表示方法。 编译原理">
+    <meta name="description" content="数字电路基础 基本门电路 首先P&#x2F;N结，带圈的低电压通，不带的高电压通。 异或门  异或的电路需要六个晶体管，主要原因是虽然四个就能完成真值表，但加上右边的P3&#x2F;N3和B后，能保证  电平恢复 强驱动力 消除浮空节点  所以右边的部分是必要的 时序逻辑电路 D锁存器 为什么输入输出连接后会有Oscillation apparent? 因为  无稳定状态 信号传输有延迟  因此虽然输出会一直变化，但">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Prog1-Part2">
-<meta property="og:url" content="https://chenxizhou233.github.io/posts/622f6855.html">
+<meta property="og:title" content="一生一芯F阶段学习笔记">
+<meta property="og:url" content="https://chenxizhou233.github.io/posts/d075c4f3.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="感觉自己下半学期学的有点问题，写点笔记复习一下 感觉下半学期的重点是编译原理，主要可以分为这么几个部分：  Lexer: 把程序转化为Token Parser: 把Token转化为语言的数据类型 Elaborator: 静态类型检查 Evaluator: 求值  自我感觉1.3.4.掌握的还行，Paser还是有点不明白。 以及3.4.的Derivation Tree还要再记一下表示方法。 编译原理">
+<meta property="og:description" content="数字电路基础 基本门电路 首先P&#x2F;N结，带圈的低电压通，不带的高电压通。 异或门  异或的电路需要六个晶体管，主要原因是虽然四个就能完成真值表，但加上右边的P3&#x2F;N3和B后，能保证  电平恢复 强驱动力 消除浮空节点  所以右边的部分是必要的 时序逻辑电路 D锁存器 为什么输入输出连接后会有Oscillation apparent? 因为  无稳定状态 信号传输有延迟  因此虽然输出会一直变化，但">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://chenxizhou233.github.io/posts/622f6855/SS.png">
-<meta property="og:image" content="https://chenxizhou233.github.io/posts/622f6855/DApp.png">
-<meta property="og:image" content="https://chenxizhou233.github.io/posts/622f6855/DAbs.png">
-<meta property="article:published_time" content="2026-01-08T02:00:30.000Z">
-<meta property="article:modified_time" content="2026-01-29T09:44:44.634Z">
+<meta property="article:published_time" content="2026-01-27T03:19:59.000Z">
+<meta property="article:modified_time" content="2026-01-29T15:44:58.489Z">
 <meta property="article:author" content="Xizhou Chen">
-<meta property="article:tag" content="函数式编程">
+<meta property="article:tag" content="硬件">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chenxizhou233.github.io/posts/622f6855/SS.png">
   
   
   
-  <title>Prog1-Part2 - Fulereneee</title>
+  <title>一生一芯F阶段学习笔记 - Fulereneee</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Prog1-Part2"></span>
+            <span id="subtitle" data-typed-text="一生一芯F阶段学习笔记"></span>
           
         </div>
 
@@ -230,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-08 10:00" pubdate>
-          2026年1月8日 上午
+        <time datetime="2026-01-27 11:19" pubdate>
+          2026年1月27日 上午
         </time>
       </span>
     
@@ -242,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          969 字
+          320 字
         
       </span>
     
@@ -253,7 +249,7 @@
         
         
         
-          9 分钟
+          3 分钟
         
       </span>
     
@@ -299,12 +295,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Prog1-Part2</h1>
+            <h1 id="seo-header">一生一芯F阶段学习笔记</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年1月29日 下午
+                    本文最后更新于 2026年1月29日 晚上
                   
                 
               </p>
@@ -312,111 +308,33 @@
             
               <div class="markdown-body">
                 
-                <p>感觉自己下半学期学的有点问题，写点笔记复习一下</p>
-<p>感觉下半学期的重点是编译原理，主要可以分为这么几个部分：</p>
-<ol type="1">
-<li>Lexer: 把程序转化为Token</li>
-<li>Parser: 把Token转化为语言的数据类型</li>
-<li>Elaborator: 静态类型检查</li>
-<li>Evaluator: 求值</li>
-</ol>
-<p>自我感觉1.3.4.掌握的还行，Paser还是有点不明白。</p>
-<p>以及3.4.的Derivation Tree还要再记一下表示方法。</p>
-<p>编译原理这一块还是先拿课上的顺序进行整理：3.4.1.2.</p>
-<h2 id="编译原理">编译原理</h2>
-<h3 id="elaborator静态类型检查">Elaborator——静态类型检查</h3>
-<p>作为人类，可能能一步一步推导类型，但怎么让计算机做呢？</p>
-<p>仔细观察（bushi），可以抽象出来几条规则，这里拿latex抄一遍：</p>
-<p>渲染有问题，直接用图片了QwQ</p>
-<img src="/posts/622f6855/SS.png" srcset="/img/loading.gif" lazyload class="" title="Static Semantics">
-<p>这个还是比较好理解的，因为不涉及环境的变更，一点一点推导下去就可以了。</p>
-<h3 id="evaluator动态求值">Evaluator——动态求值</h3>
-<p>这里涉及环境的变更，所以语法上有些地方要注意。</p>
-<img src="/posts/622f6855/DApp.png" srcset="/img/loading.gif" lazyload class="" title="DApp">
-<ol type="1">
-<li>函数要写成Tuple的形式</li>
-<li>新的环境要在最后表示出来</li>
-</ol>
-<img src="/posts/622f6855/DAbs.png" srcset="/img/loading.gif" lazyload class="" title="DAbs">
-<p>函数在Abs时候要写成Tuple形式。</p>
-<h3 id="lexertoken化">Lexer——Token化</h3>
-<p>这个没啥难的，直接字符串explode后match就可以</p>
-<h3
-id="parser把token处理为eval和elab能处理的形式">Parser——把Token处理为Eval和Elab能处理的形式</h3>
-<p>这里用的是Recursively Descending Parser
-主要思想就是先处理优先级低的，然后一步一步向下处理。
-这里用到了OCaml一个制造相互使用的函数的语法糖：and。
-就是可以前面先用这个函数，然后and 函数名=…补上。</p>
-<p>这里复习一下我一分不得的Mini Test题目：</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs OCaml"><span class="hljs-keyword">type</span> token=<span class="hljs-type">HE</span>|<span class="hljs-type">HO</span>|<span class="hljs-type">LP</span>|<span class="hljs-type">RP</span>|<span class="hljs-type">SIM</span><br>;;<br><span class="hljs-keyword">type</span> exp=<span class="hljs-type">He</span>|<span class="hljs-type">Ho</span>|<span class="hljs-type">Sim</span> <span class="hljs-keyword">of</span> exp*exp<br>;;<br><span class="hljs-keyword">type</span> cexp ts=<br><span class="hljs-keyword">match</span> pty ts <span class="hljs-keyword">with</span><br>| t1, <span class="hljs-type">SIM</span> :: ts = <span class="hljs-keyword">let</span> t2,ts = cexp ts <span class="hljs-keyword">in</span> (<span class="hljs-type">Sim</span>(t1,t2),ts)<br>| p-&gt;p<br><span class="hljs-keyword">and</span> pty = <span class="hljs-keyword">function</span><br>| <span class="hljs-type">HE</span>::ts -&gt; (<span class="hljs-type">He</span>,ts)<br>| <span class="hljs-type">HO</span>::ts -&gt; (<span class="hljs-type">Ho</span>,ts)<br>| <span class="hljs-type">LP</span>::ts -&gt; <br>        <span class="hljs-keyword">let</span> t1,ts = cexp ts <span class="hljs-keyword">in</span><br>        <span class="hljs-keyword">let</span> ts = expect <span class="hljs-type">RP</span> ts <span class="hljs-keyword">in</span><br>        (t1,ts)<br>| _-&gt;failwith <span class="hljs-string">&quot;Not Valid&quot;</span><br></code></pre></td></tr></table></figure>
-<p>核心还是每次解析的时候尝试看看下层还有没有可以解析的，然后一层一层向下。</p>
-<p>核心就是Grammar，对每个非终结符总结一个替换方式然后按优先级逐个应用。</p>
-<h2 id="形式化的递归表达">形式化的递归表达</h2>
-<p>现在课上在讲这个，顺手写一下吧。</p>
-<h3 id="递归式的一种表示方法">递归式的一种表示方法</h3>
-<p>e.g.</p>
-<p><span
-class="math inline"><em>F</em><em>i</em><em>b</em>(<em>x</em>) = IF
-<em>x</em> &lt; 2 THEN <em>x</em> ELSE
-<em>F</em><em>i</em><em>b</em>(<em>x</em> − 1) + <em>F</em><em>i</em><em>b</em>(<em>x</em> − 2)</span></p>
-<p>可以表示为 <span class="math inline">IF <em>x</em> &lt; 2 THEN ⟨⟩
-ELSE ⟨<em>x</em> − 1, <em>x</em> − 2⟩</span></p>
-<h3 id="递归关系">递归关系</h3>
-<p>刚才的柿子中，<span class="math inline">⟨⟩</span> 中的东西叫Precedent
-Argument. 如果我们把当前参数和Precedent
-Argument中间连一条有向边，就构成的一个递归关系R。</p>
-<p>可以和之前的Termination Relation联系起来：你能terminate，
-这个递归才能结束。怎么判断能否Terminate呢，看这个function能不能在某种encoding下countable。</p>
-<h3
-id="证明函数定义和数学上的函数表达的是一个东西"><em>证明</em>函数定义和数学上的函数表达的是一个东西</h3>
-<p>这一部分主要是数学上的证明，跟编程知识就没啥关系了。</p>
-<p>但是minitest里给出了需要的证明方式：</p>
-<h4 id="证明dom-somethingsubseteqdom-f">1.证明Dom something<span
-class="math inline">⊆</span>Dom f</h4>
-<p>给出Termination Function， 证明两个Dom都对这个function terminate，
-所以有这个关系</p>
-<h4 id="证明数学上一致">2.证明数学上一致</h4>
-<p>对每个条件分支，做一下和Mathematical induction类似的变形。</p>
-<h3 id="structural-induction">Structural Induction</h3>
-<p>Given a claim, for each possible arg, make the claim a induction
-form.</p>
-<h3 id="解题过程的注意事项">解题过程的注意事项</h3>
-<p>首先，起手式是固定的，以List相关内容为例：</p>
-<blockquote>
-<p>Let <span class="math inline"><em>X</em></span> be an arbitrary yet
-fixed type, we show the <span
-class="math inline">∀<em>x</em><em>s</em> ∈ ℒ(<em>X</em>), <em>y</em><em>s</em> ∈ ℒ(<em>X</em>), ...(the
-claim) by structural induction on <em>x</em><em>s</em></span></p>
-</blockquote>
-<p>重点是<strong>arbitrary but fixed</strong>以及全称量词的使用.
-然后开始induction，先证基本类型，再证induction的part。
-重点就是要写得尽可能详细，每一步都要有出处，常见的有：</p>
+                <h2 id="数字电路基础">数字电路基础</h2>
+<h3 id="基本门电路">基本门电路</h3>
+<p>首先P/N结，带圈的低电压通，不带的高电压通。</p>
+<h3 id="异或门">异或门</h3>
+
+<p>异或的电路需要六个晶体管，主要原因是虽然四个就能完成真值表，但加上右边的P3/N3和B后，能保证</p>
 <ul>
-<li>arithmetic</li>
-<li>a=b+c</li>
-<li>IH(induction hypothesis)</li>
-<li>Definition of function</li>
-<li>…</li>
+<li>电平恢复</li>
+<li>强驱动力</li>
+<li>消除浮空节点</li>
 </ul>
-<h2 id="prog1的time-complexity">Prog1的time complexity</h2>
-<h3 id="size-function-revisited">Size function revisited</h3>
-<p>注意这个东西的选择。如果你给一个<span
-class="math inline">𝒪(<em>n</em>)</span>算法选择了形如<span
-class="math inline"><em>λ</em><em>n</em> ∈ ℕ, 2<sup><em>n</em></sup></span>的size
-function，那么你在主定理的柿子里就要用形如<span
-class="math inline"><em>T</em>(<em>n</em>) = <em>T</em>(2<sup>log<sub>2</sub><em>n</em> − 1</sup>) + 𝒪(something)</span>的柿子。</p>
-<h3 id="主定理复习">主定理复习</h3>
-<p>对于形如 <span class="math display">$$
-    T(n)=b\cdot T(\frac{n}{a})+\mathcal{O}(n^d\log^s n)\\
-    f(n)=n^d\log^s n
-$$</span> 的柿子，有：</p>
-<ol type="1">
-<li><span
-class="math inline"><em>a</em> &lt; <em>b</em><sup><em>d</em></sup>, 𝒪(<em>n</em><sup><em>d</em></sup>log<sup><em>s</em></sup><em>n</em>)</span></li>
-<li><span
-class="math inline"><em>a</em> = <em>b</em><sup><em>d</em></sup>, 𝒪(<em>n</em><sup><em>d</em></sup>log<sup><em>s</em> + 1</sup><em>n</em>)</span></li>
-<li>$a&gt;b^d,</li>
-</ol>
+<p>所以右边的部分是必要的</p>
+<h2 id="时序逻辑电路">时序逻辑电路</h2>
+<h3 id="d锁存器">D锁存器</h3>
+<p>为什么输入输出连接后会有<code>Oscillation apparent</code>? 因为</p>
+<ul>
+<li>无稳定状态</li>
+<li>信号传输有延迟</li>
+</ul>
+<p>因此虽然输出会一直变化，但其实一个<code>Oscillation apparent</code>的状态</p>
+<h3 id="d触发器">D触发器</h3>
+<p>整体想法是我们如何控制一个锁存器只在clk上升时改变储存内容。</p>
+<p>这里介绍的是主从式锁存器。</p>
+<p>想法是使用一个非门创造一个条件使得主从锁存器无法同时写使能。
+ 首先，低电平时，数据进入主锁存器。此时主读，从写不进
+然后，变为高电平，形成上升端时，数据从主到从。此时主无法读，从能写能输出。
+又因为此时无法读，所以主从锁存器的状态都不会改变，因此可以维持这个状态，不论输入怎么变化。</p>
 
                 
               </div>
@@ -429,7 +347,7 @@ class="math inline"><em>a</em> = <em>b</em><sup><em>d</em></sup>, 𝒪(<em
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" class="print-no-link">#函数式编程</a>
+        <a href="/tags/%E7%A1%AC%E4%BB%B6/" class="print-no-link">#硬件</a>
       
     </div>
   
@@ -441,8 +359,8 @@ class="math inline"><em>a</em> = <em>b</em><sup><em>d</em></sup>, 𝒪(<em
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Prog1-Part2</div>
-      <div>https://chenxizhou233.github.io/posts/622f6855.html</div>
+      <div>一生一芯F阶段学习笔记</div>
+      <div>https://chenxizhou233.github.io/posts/d075c4f3.html</div>
     </div>
     <div class="license-meta">
       
@@ -454,7 +372,7 @@ class="math inline"><em>a</em> = <em>b</em><sup><em>d</em></sup>, 𝒪(<em
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月8日</div>
+          <div>2026年1月27日</div>
         </div>
       
       
@@ -486,18 +404,12 @@ class="math inline"><em>a</em> = <em>b</em><sup><em>d</em></sup>, 𝒪(<em
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/14072394.html" title="MathI">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MathI</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/85db524f.html" title="ITCS">
-                        <span class="hidden-mobile">ITCS</span>
+                      <a href="/posts/465525c9.html" title="烈日灼心观后感">
+                        <span class="hidden-mobile">烈日灼心观后感</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
