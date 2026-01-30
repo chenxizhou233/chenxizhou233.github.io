@@ -27,7 +27,7 @@
 <meta property="og:description" content="快到期末周了，为自己的Cheat Sheet做点准备 Naive Set Theory 感觉唯一要看的是两个集合的power和一个证明过程。 CaO，一翻Slide发现还有几个定义要说。 几个定义 $&#x3D;{X $  ⊆ A : |X| &#x3D; k} BA &#x3D; {f : A → B} a  R  b infixnotation for (a, b) ∈ R 一个证明 Theorem: For every">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-07T12:40:48.000Z">
-<meta property="article:modified_time" content="2026-01-30T08:07:59.497Z">
+<meta property="article:modified_time" content="2026-01-30T08:15:55.064Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="理论计算机">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.5k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          12 分钟
+          13 分钟
         
       </span>
     
@@ -494,6 +494,9 @@ class="math display"><em>N</em><em>P</em> = ⋃<sub><em>k</em> &gt; 1</s
 class="math display"><em>L</em> = DSPACE(log <em>n</em>)，<em>N</em><em>L</em> = NSAPCE(log <em>n</em>)</span></p>
 <p>他们之间的关系是 <span
 class="math display"><em>L</em> ⊆ <em>N</em><em>L</em> ⊆ <em>P</em> ⊆ <em>N</em><em>P</em> ⊆ <em>D</em><em>S</em><em>P</em><em>A</em><em>C</em><em>E</em> = <em>N</em><em>S</em><em>P</em><em>A</em><em>C</em><em>E</em></span></p>
+<p>补一个Tutorial提到的点。为什么区分NP和co-NP但不管co-P？因为其实co-P通过对输出取反就能做到，所以不用管。</p>
+<p>以及有一种东西叫semi-polynomial的算法。
+意思是它在以输入大小作为衡量尺度的时候有多项式时间解法，但如果以输入长度来看，它就是NP的。</p>
 <h2 id="p-reducible">P-reducible</h2>
 <h3 id="definition">Definition</h3>
 <p>首先引入一个polynomial reduction。 其实就是把everywhere
@@ -510,6 +513,18 @@ then S is <span class="math inline">NP-hard</span>。</p>
 <blockquote>
 <p>…, S<span class="math inline"> ∈ NP</span></p>
 </blockquote>
+<h3 id="解题格式">解题格式</h3>
+<p>Tutorial上讲的，也不能说格式吧，就是证NP-completeness的过程。</p>
+<ol type="1">
+<li>使用certificate的定义，证明这个东西是in NP的</li>
+<li>使用P-reduction，证明它是NP-hard的。</li>
+</ol>
+<p>然后就能证好了。</p>
+<p>常用的感觉就是：</p>
+<ol type="1">
+<li><span class="math inline">SUBSETSUM</span></li>
+<li><span class="math inline">SAT/3 − SAT</span></li>
+</ol>
 <h3 id="几个具体">几个具体🌰</h3>
 <p><span class="math inline">MERF</span>:multi-valued satisfiability.
 <span
