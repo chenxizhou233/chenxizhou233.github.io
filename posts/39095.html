@@ -101,6 +101,8 @@
   
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
@@ -309,10 +311,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="关于字符串读取的问题">关于字符串读取的问题</h2>
-<p>getline(std::cin,str) 读取到缓冲区<code>'\n'</code> 前的字符串。故在
-<code>std::cin&gt;&gt;n&gt;&gt;m</code>
-这样的代码后，第一次读到的会是空串。因此需要有</p>
+                <h2 id="关于字符串读取的问题"><a class="markdownIt-Anchor" href="#关于字符串读取的问题"></a> 关于字符串读取的问题</h2>
+<p>getline(std::cin,str) 读取到缓冲区<code>'\n'</code> 前的字符串。故在 <code>std::cin&gt;&gt;n&gt;&gt;m</code> 这样的代码后，第一次读到的会是空串。因此需要有</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(str==<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-built_in">getline</span>(std::cin,str);<br></code></pre></td></tr></table></figure>
 <p>这样的代码</p>
 

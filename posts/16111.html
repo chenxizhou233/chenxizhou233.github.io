@@ -19,12 +19,12 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总结  flex 中，默认使用行排布 flex-grow 控制单元大小 清除计时器需要给 setInterval一个名字（let sth &#x3D; setInterval(func,time)）  10.10 扩展不定数量多个元素时，可以使用 map() 进行。  Parentheses (): Used for arrow functions. Implicit return statement if">
+    <meta name="description" content="总结   flex 中，默认使用行排布   flex-grow 控制单元大小   清除计时器需要给 setInterval一个名字（let sth &#x3D; setInterval(func,time)）    10.10 扩展不定数量多个元素时，可以使用 map() 进行。  Parentheses (): Used for arrow functions. Implicit return stat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note-weblab-w0">
 <meta property="og:url" content="https://chenxizhou233.github.io/posts/16111.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="总结  flex 中，默认使用行排布 flex-grow 控制单元大小 清除计时器需要给 setInterval一个名字（let sth &#x3D; setInterval(func,time)）  10.10 扩展不定数量多个元素时，可以使用 map() 进行。  Parentheses (): Used for arrow functions. Implicit return statement if">
+<meta property="og:description" content="总结   flex 中，默认使用行排布   flex-grow 控制单元大小   清除计时器需要给 setInterval一个名字（let sth &#x3D; setInterval(func,time)）    10.10 扩展不定数量多个元素时，可以使用 map() 进行。  Parentheses (): Used for arrow functions. Implicit return stat">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-30T10:19:40.000Z">
 <meta property="article:modified_time" content="2026-01-03T08:42:56.982Z">
@@ -100,6 +100,8 @@
   
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
@@ -308,33 +310,35 @@
             
               <div class="markdown-body">
                 
-                <h2 id="总结">总结</h2>
-<ol type="1">
-<li><p><code>flex</code> 中，默认使用行排布</p></li>
-<li><p><code>flex-grow</code> 控制单元大小</p></li>
-<li><p>清除计时器需要给
-<code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p></li>
+                <h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<ol>
+<li>
+<p><code>flex</code> 中，默认使用行排布</p>
+</li>
+<li>
+<p><code>flex-grow</code> 控制单元大小</p>
+</li>
+<li>
+<p>清除计时器需要给 <code>setInterval</code>一个名字（<code>let sth = setInterval(func,time)</code>）</p>
+</li>
 </ol>
-<h3 id="section">10.10</h3>
+<h3 id="1010"><a class="markdownIt-Anchor" href="#1010"></a> 10.10</h3>
 <p>扩展不定数量多个元素时，可以使用 map() 进行。</p>
 <ul>
-<li><strong>Parentheses <code>()</code></strong>: Used for arrow
-functions. <strong>Implicit return</strong> statement if there’s only
-one expression.</li>
-<li><strong>Curly Braces <code>&#123;&#125;</code></strong>: Used for regular
-function declarations. Explicit <code>return</code> statement
-needed.</li>
+<li><strong>Parentheses <code>()</code></strong>: Used for arrow functions. <strong>Implicit return</strong> statement if there’s only one expression.</li>
+<li><strong>Curly Braces <code>&#123;&#125;</code></strong>: Used for regular function declarations. Explicit <code>return</code> statement needed.</li>
 </ul>
-<h3 id="section-1">10.27</h3>
+<h3 id="1027"><a class="markdownIt-Anchor" href="#1027"></a> 10.27</h3>
 <p>学到了一些前端框架的开发习惯：</p>
-<ol type="1">
+<ol>
 <li>container套container来实现排版效果</li>
 <li>与数据库交互时，检查登录状态（isLoggedin）。</li>
 <li>与Mongodb交互时的查找方法：新建一个json，里面写上键值，然后<code>.find(...).then(...)</code></li>
 </ol>
-<h3 id="section-2">10.28</h3>
-<p>GET/POST 解决客户端与服务器通讯 Socket解决服务器与客户端通信</p>
-<h3 id="section-3">10.30</h3>
+<h3 id="1028"><a class="markdownIt-Anchor" href="#1028"></a> 10.28</h3>
+<p>GET/POST 解决客户端与服务器通讯<br />
+Socket解决服务器与客户端通信</p>
+<h3 id="1030"><a class="markdownIt-Anchor" href="#1030"></a> 10.30</h3>
 <p>useEffect中return的函数在这个结构销毁时调用，等价于构析函数。</p>
 <p>检查是否有函数并调用：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">func &amp;&amp; <span class="hljs-title function_">func</span>(para)<br></code></pre></td></tr></table></figure>
