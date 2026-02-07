@@ -27,7 +27,7 @@
 <meta property="og:description" content="快到期末周了，为自己的Cheat Sheet做点准备  Naive Set Theory 感觉唯一要看的是两个集合的power和一个证明过程。 CaO，一翻Slide发现还有几个定义要说。  几个定义 $\binom{A}{k}&#x3D;{X $ ⊆A:∣X∣&#x3D;k}\subseteq A: |X|&#x3D;k\}⊆A:∣X∣&#x3D;k} BA&#x3D;{f:A→B}B^A&#x3D;\{f: A\to B\}BA&#x3D;{f:A→B} aRb">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-07T12:40:48.000Z">
-<meta property="article:modified_time" content="2026-02-04T14:39:53.602Z">
+<meta property="article:modified_time" content="2026-02-06T08:07:45.176Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="理论计算机">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          2.6k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          20 分钟
+          22 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年2月4日 晚上
+                    本文最后更新于 2026年2月6日 下午
                   
                 
               </p>
@@ -539,6 +539,39 @@ reject.<br />
 <p>ZPP=RP <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∩</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.55556em;vertical-align:0em;"></span><span class="mord">∩</span></span></span></span>c o-RP</p>
 <p>BPP: 错误概率小于 1/3</p>
 <p>🌰：SAT的多项式版本</p>
+<h2 id="课上老师给的big-picture"><a class="markdownIt-Anchor" href="#课上老师给的big-picture"></a> 课上老师给的Big Picture</h2>
+<h3 id="computing"><a class="markdownIt-Anchor" href="#computing"></a> Computing</h3>
+<p>首先，给定几个基本要素：</p>
+<ol>
+<li>Input tap, Work tape</li>
+<li>FA, FDA, TM</li>
+<li>(non-)deterministic</li>
+</ol>
+<p>然后是几个概念：</p>
+<ol>
+<li>grammars</li>
+<li>language accepted by TM -&gt; Recursively Enumerable</li>
+<li>SAM: Self Accepting Machine</li>
+<li><strong>Reduction</strong>, 几乎是最重要的内容。</li>
+</ol>
+<p>然后是Rice Theorem 和 PCP</p>
+<!-- TODO 补全问题描述，定义和证法 -->
+<p>Recursion Theory</p>
+<h3 id="complexity-theory"><a class="markdownIt-Anchor" href="#complexity-theory"></a> Complexity Theory</h3>
+<p>首先复习了复杂度类的定义</p>
+<p><strong>Configuration Graph</strong>很重要，NP-complete的时候会argue这个东西</p>
+<h4 id="poly-time-reduction"><a class="markdownIt-Anchor" href="#poly-time-reduction"></a> Poly-time reduction</h4>
+<p>默写一下定义：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∃</mi><mi>F</mi><mo>:</mo><msup><mi mathvariant="normal">Σ</mi><mo>∗</mo></msup><mo>→</mo><msup><mi mathvariant="normal">Γ</mi><mo>∗</mo></msup><mtext>Computable in poly-time</mtext></mrow><annotation encoding="application/x-tex">    \exists F: \Sigma^* \to \Gamma^* \text{Computable in poly-time}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">∃</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.738696em;vertical-align:0em;"></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.933136em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">Γ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">Computable in poly-time</span></span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mo>∈</mo><msup><mi mathvariant="normal">Σ</mi><mo>∗</mo></msup><mo separator="true">,</mo><mi>x</mi><mo>∈</mo><mi>L</mi><mo>⇔</mo><mi>F</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>∈</mo><msup><mi>L</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">    \forall x\in\Sigma^*, x\in L \Leftrightarrow F(x)\in L&#x27;
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.933136em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⇔</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.801892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="np-complete-定义"><a class="markdownIt-Anchor" href="#np-complete-定义"></a> NP-complete 定义</h4>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mo>∈</mo><mrow><mi mathvariant="normal">N</mi><mi mathvariant="normal">P</mi></mrow><mo separator="true">,</mo><mi mathvariant="normal">∀</mi><mi>L</mi><mo>∈</mo><mrow><mi mathvariant="normal">N</mi><mi mathvariant="normal">P</mi></mrow><mo separator="true">,</mo><mi>L</mi><msub><mo>⪯</mo><mi>p</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">S\in \mathrm{NP}, \forall L\in\mathrm{NP},L\preceq_p S
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathrm">N</span><span class="mord mathrm">P</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∀</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathrm">N</span><span class="mord mathrm">P</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">⪯</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span></p>
+<p>还有</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mtext> NP-hard</mtext><mo separator="true">,</mo><mi>S</mi><msub><mo>⪯</mo><mi>p</mi></msub><msup><mi>L</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><msup><mi>L</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mtext> NP-hard</mtext></mrow><annotation encoding="application/x-tex">    S\textrm{ NP-hard}, S\preceq_p L&#x27;\implies L&#x27; \textrm{ NP-hard}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord text"><span class="mord textrm"> NP-hard</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">⪯</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8258920000000001em;vertical-align:-0.024em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.801892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord text"><span class="mord textrm"> NP-hard</span></span></span></span></span></span></p>
 
                 
               </div>
