@@ -23,6 +23,25 @@
   
   
   <entry>
+    <title>一生一芯E阶段学习笔记</title>
+    <link href="/posts/7323425a.html"/>
+    <url>/posts/7323425a.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="verilog基础"><a class="markdownIt-Anchor" href="#verilog基础"></a> Verilog基础</h2><p>原件声明：</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> (<span class="hljs-keyword">input</span> a,b,c,<span class="hljs-keyword">output</span> x,y,z,t)<br>    <span class="hljs-keyword">assign</span> &#123;x,y,z,t&#125;=&#123;a,b,c,c&#125;;<br>    <span class="hljs-comment">//这个是**确定位宽时**的赋值语法糖</span><br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>硬件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ALDS</title>
     <link href="/posts/1d1b1eaf.html"/>
     <url>/posts/1d1b1eaf.html</url>
