@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>Rustling笔记</title>
+    <title>OSCamp学习笔记</title>
     <link href="/posts/cde1545b.html"/>
     <url>/posts/cde1545b.html</url>
     
-    <content type="html"><![CDATA[<h2 id="error"><a class="markdownIt-Anchor" href="#error"></a> Error</h2><p>这一部分是学习OCaml（，采用经典的 None/Some(n) 形式。</p><p>然后Rust还有自己特化的一个错误类型 <code>Result&lt;type,errorType&gt;</code>, 它包括正常运行时的 <code>Ok(n)</code> 和错误时的 <code>Err(e)</code>.</p><h3 id="error2"><a class="markdownIt-Anchor" href="#error2"></a> Error2</h3><p>一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 <code>?</code>，和对应 <code>match</code> 表达式一个效果。</p><h3 id="error3"><a class="markdownIt-Anchor" href="#error3"></a> Error3</h3><p>那么如果一个函数本身就不用返回什么东西呢。这里我们可以这样改造：</p><ol><li>给函数的返回值改为 <code>Result&lt;(),ErrType&gt;</code> 的形式。</li><li>在函数的末尾加一个 <code>OK(())</code>，因为我们并不会用到 <code>()</code> 的部分。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="error"><a class="markdownIt-Anchor" href="#error"></a> Error</h2><p>这一部分是学习OCaml（，采用经典的 None/Some(n) 形式。</p><p>然后Rust还有自己特化的一个错误类型 <code>Result&lt;type,errorType&gt;</code>, 它包括正常运行时的 <code>Ok(n)</code> 和错误时的 <code>Err(e)</code>.</p><h3 id="error2"><a class="markdownIt-Anchor" href="#error2"></a> Error2</h3><p>一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 <code>?</code>，和对应 <code>match</code> 表达式一个效果。</p><h3 id="error3"><a class="markdownIt-Anchor" href="#error3"></a> Error3</h3><p>那么如果一个函数本身就不用返回什么东西呢。这里我们可以这样改造：</p><ol><li>给函数的返回值改为 <code>Result&lt;(),ErrType&gt;</code> 的形式。</li><li>在函数的末尾加一个 <code>OK(())</code>，因为我们并不会用到 <code>()</code> 的部分。</li></ol><h2 id="pagetable相关"><a class="markdownIt-Anchor" href="#pagetable相关"></a> PageTable相关</h2><p>首先，三级页表在内存中是在一个哈希表里的，只不过上面会有很多映射关系，最深三层。</p><p>然后虚拟地址 va 就包含着这三层需要的信息和offset。<br />真实地址包含 ppn 和 offset 两部分，还愿的时候要根据页表类型灵活实现。</p>]]></content>
     
     
     

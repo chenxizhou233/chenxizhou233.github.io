@@ -21,20 +21,20 @@
   
     <meta name="description" content="Error 这一部分是学习OCaml（，采用经典的 None&#x2F;Some(n) 形式。 然后Rust还有自己特化的一个错误类型 Result&lt;type,errorType&gt;, 它包括正常运行时的 Ok(n) 和错误时的 Err(e).  Error2 一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 ?，和对应 match 表达式一个效果。  Error3 那么">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rustling笔记">
+<meta property="og:title" content="OSCamp学习笔记">
 <meta property="og:url" content="https://chenxizhou233.github.io/posts/cde1545b.html">
 <meta property="og:site_name" content="Fulereneee">
 <meta property="og:description" content="Error 这一部分是学习OCaml（，采用经典的 None&#x2F;Some(n) 形式。 然后Rust还有自己特化的一个错误类型 Result&lt;type,errorType&gt;, 它包括正常运行时的 Ok(n) 和错误时的 Err(e).  Error2 一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 ?，和对应 match 表达式一个效果。  Error3 那么">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-12T01:16:26.000Z">
-<meta property="article:modified_time" content="2026-03-12T08:21:50.179Z">
+<meta property="article:modified_time" content="2026-03-26T08:38:24.451Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="Rust">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Rustling笔记 - Fulereneee</title>
+  <title>OSCamp学习笔记 - Fulereneee</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Rustling笔记"></span>
+            <span id="subtitle" data-typed-text="OSCamp学习笔记"></span>
           
         </div>
 
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          164 字
+          250 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -297,12 +297,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Rustling笔记</h1>
+            <h1 id="seo-header">OSCamp学习笔记</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年3月12日 下午
+                    本文最后更新于 2026年3月26日 下午
                   
                 
               </p>
@@ -321,6 +321,10 @@
 <li>给函数的返回值改为 <code>Result&lt;(),ErrType&gt;</code> 的形式。</li>
 <li>在函数的末尾加一个 <code>OK(())</code>，因为我们并不会用到 <code>()</code> 的部分。</li>
 </ol>
+<h2 id="pagetable相关"><a class="markdownIt-Anchor" href="#pagetable相关"></a> PageTable相关</h2>
+<p>首先，三级页表在内存中是在一个哈希表里的，只不过上面会有很多映射关系，最深三层。</p>
+<p>然后虚拟地址 va 就包含着这三层需要的信息和offset。<br />
+真实地址包含 ppn 和 offset 两部分，还愿的时候要根据页表类型灵活实现。</p>
 
                 
               </div>
@@ -345,7 +349,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Rustling笔记</div>
+      <div>OSCamp学习笔记</div>
       <div>https://chenxizhou233.github.io/posts/cde1545b.html</div>
     </div>
     <div class="license-meta">
