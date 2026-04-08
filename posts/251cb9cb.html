@@ -19,22 +19,23 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Error 这一部分是学习OCaml（，采用经典的 None&#x2F;Some(n) 形式。 然后Rust还有自己特化的一个错误类型 Result&lt;type,errorType&gt;, 它包括正常运行时的 Ok(n) 和错误时的 Err(e).  Error2 一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 ?，和对应 match 表达式一个效果。  Error3 那么">
+    <meta name="description" content="还是放不下吗。  Part1 十分恶俗啊，依稀只记得我坐在一个阶梯教室的最底部，右前方有个窗户，但还是在做大胆的演奏家[1]。 从前门出来的时候还偶然看到了正儿八经裙底视角，好看捏。  Part2 以下两部分是重头戏啊。 又回到了学校，座位排布还是四列，但这一次，张佳音就在我的正前方。 然后好像是上了一节物理？直接每组发了个小型特斯拉拉电弧装置，我拿圆规做了做拉电弧还吧圆规干废了[2]。  Par">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OSCamp学习笔记">
-<meta property="og:url" content="https://chenxizhou233.github.io/posts/cde1545b.html">
+<meta property="og:title" content="三段梦-20260408">
+<meta property="og:url" content="https://chenxizhou233.github.io/posts/251cb9cb.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="Error 这一部分是学习OCaml（，采用经典的 None&#x2F;Some(n) 形式。 然后Rust还有自己特化的一个错误类型 Result&lt;type,errorType&gt;, 它包括正常运行时的 Ok(n) 和错误时的 Err(e).  Error2 一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 ?，和对应 match 表达式一个效果。  Error3 那么">
+<meta property="og:description" content="还是放不下吗。  Part1 十分恶俗啊，依稀只记得我坐在一个阶梯教室的最底部，右前方有个窗户，但还是在做大胆的演奏家[1]。 从前门出来的时候还偶然看到了正儿八经裙底视角，好看捏。  Part2 以下两部分是重头戏啊。 又回到了学校，座位排布还是四列，但这一次，张佳音就在我的正前方。 然后好像是上了一节物理？直接每组发了个小型特斯拉拉电弧装置，我拿圆规做了做拉电弧还吧圆规干废了[2]。  Par">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-03-12T01:16:26.000Z">
-<meta property="article:modified_time" content="2026-03-29T18:32:51.344Z">
+<meta property="article:published_time" content="2026-04-07T23:19:46.000Z">
+<meta property="article:modified_time" content="2026-04-08T05:46:19.495Z">
 <meta property="article:author" content="Xizhou Chen">
-<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="日记">
+<meta property="article:tag" content="梦">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>OSCamp学习笔记 - Fulereneee</title>
+  <title>三段梦-20260408 - Fulereneee</title><meta name="robots" content="noindex">
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="OSCamp学习笔记"></span>
+            <span id="subtitle" data-typed-text="三段梦-20260408"></span>
           
         </div>
 
@@ -228,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-03-12 09:16" pubdate>
-          2026年3月12日 上午
+        <time datetime="2026-04-08 07:19" pubdate>
+          2026年4月8日 早上
         </time>
       </span>
     
@@ -240,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          281 字
+          634 字
         
       </span>
     
@@ -251,7 +252,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -297,12 +298,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">OSCamp学习笔记</h1>
+            <h1 id="seo-header">三段梦-20260408</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年3月30日 凌晨
+                    本文最后更新于 2026年4月8日 下午
                   
                 
               </p>
@@ -310,23 +311,35 @@
             
               <div class="markdown-body">
                 
-                <h2 id="error"><a class="markdownIt-Anchor" href="#error"></a> Error</h2>
-<p>这一部分是学习OCaml（，采用经典的 None/Some(n) 形式。</p>
-<p>然后Rust还有自己特化的一个错误类型 <code>Result&lt;type,errorType&gt;</code>, 它包括正常运行时的 <code>Ok(n)</code> 和错误时的 <code>Err(e)</code>.</p>
-<h3 id="error2"><a class="markdownIt-Anchor" href="#error2"></a> Error2</h3>
-<p>一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 <code>?</code>，和对应 <code>match</code> 表达式一个效果。</p>
-<h3 id="error3"><a class="markdownIt-Anchor" href="#error3"></a> Error3</h3>
-<p>那么如果一个函数本身就不用返回什么东西呢。这里我们可以这样改造：</p>
-<ol>
-<li>给函数的返回值改为 <code>Result&lt;(),ErrType&gt;</code> 的形式。</li>
-<li>在函数的末尾加一个 <code>OK(())</code>，因为我们并不会用到 <code>()</code> 的部分。</li>
-</ol>
-<h2 id="pagetable相关"><a class="markdownIt-Anchor" href="#pagetable相关"></a> PageTable相关</h2>
-<p>首先，三级页表在内存中是在一个哈希表里的，只不过上面会有很多映射关系，最深三层。</p>
-<p>然后虚拟地址 va 就包含着这三层需要的信息和offset。<br />
-真实地址包含 ppn 和 offset 两部分，还愿的时候要根据页表类型灵活实现。</p>
-<p>大页对齐保证了低 21 位为 0， 所以可以保证在 <code>|offset</code> 的时候就算 offset 为 21 位也不会冲突</p>
-
+                <p>还是放不下吗。</p>
+<h2 id="part1"><a class="markdownIt-Anchor" href="#part1"></a> Part1</h2>
+<p>十分恶俗啊，依稀只记得我坐在一个阶梯教室的最底部，右前方有个窗户，但还是在做大胆的演奏家<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="flasher赛蕾卡">[1]</span></a></sup>。<br />
+从前门出来的时候还偶然看到了正儿八经裙底视角，好看捏。</p>
+<h2 id="part2"><a class="markdownIt-Anchor" href="#part2"></a> Part2</h2>
+<p>以下两部分是重头戏啊。</p>
+<p>又回到了学校，座位排布还是四列，但这一次，张佳音就在我的正前方。</p>
+<p>然后好像是上了一节物理？直接每组发了个小型特斯拉拉电弧装置，我拿圆规做了做拉电弧还吧圆规干废了<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="关于带电水池拉出电弧的短视频">[2]</span></a></sup>。</p>
+<h2 id="part3"><a class="markdownIt-Anchor" href="#part3"></a> Part3</h2>
+<p>这是最神奇的部分，也是我最想记录的部分。</p>
+<p>大概是一节自习课，我不知怎得突然想出去休息休息，于是就走到了一个连廊。</p>
+<p>梦里在想的事好像还和 fgo 有关，神秘。 然后往连廊入口右手边走能看到外面，左手边是篮球场<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="还真是学校连廊">[3]</span></a></sup>，右手边是像人一样走路的座山雕<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="辽宁省动物园的座山雕短视频">[4]</span></a></sup>和学生旅游团。这团也有意思，下飞机就打篮球。</p>
+<p>最后感觉休息够了，就往回走，路上看到了许多在外自习的人却不见她，路过后门时从窗户看到了她的身影<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="当时学校站在走廊储物柜上自习的风气">[5]</span></a></sup>。</p>
+<p>进了门，教室里乱哄哄的。我刚从外面回来感觉有点怪，笑了笑。</p>
+<p>没想到还有孔嫂的事，打趣道“出去都干了些什么啊”，我说见都没见到。她却说“她一直在后面呢，快去说点啥哦”。但神奇的是我正好要去后面拿个东西，回来的时候却扭头就走<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="难解心结，以及我是傻逼">[6]</span></a></sup>。</p>
+<p>然后她正常的例行公事发放资料。我做着资料，想着放学后有没有机会说这件事。</p>
+<p>但似乎是没干成，因为马上就回家洗漱了。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi><mi mathvariant="script">I</mi><mi mathvariant="script">N</mi></mrow><annotation encoding="application/x-tex">\mathcal{FIN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.09931em;">F</span><span class="mord mathcal" style="margin-right:0.07382em;">I</span><span class="mord mathcal" style="margin-right:0.14736em;">N</span></span></span></span></span></p>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
+<p>感觉梦确实是潜意识投射，这里面所有场景基本都是最近刷到的或者是心结。</p>
+<p>最后自习课的场景更让我感受到自己的糯和不知所谓的自尊是真害人。真是不管再哪个平行宇宙里，我都没什么机会成功吧。</p>
+<p>以下为说明</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>flasher赛蕾卡
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>关于带电水池拉出电弧的短视频
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>还真是学校连廊
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>辽宁省动物园的座山雕短视频
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span>当时学校站在走廊储物柜上自习的风气
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span>难解心结，以及我是傻逼
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><!-- flag of hidden posts -->
                 
               </div>
             
@@ -338,7 +351,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Rust/" class="print-no-link">#Rust</a>
+        <a href="/tags/%E6%97%A5%E8%AE%B0/" class="print-no-link">#日记</a>
+      
+        <a href="/tags/%E6%A2%A6/" class="print-no-link">#梦</a>
       
     </div>
   
@@ -350,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>OSCamp学习笔记</div>
-      <div>https://chenxizhou233.github.io/posts/cde1545b.html</div>
+      <div>三段梦-20260408</div>
+      <div>https://chenxizhou233.github.io/posts/251cb9cb.html</div>
     </div>
     <div class="license-meta">
       
@@ -363,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年3月12日</div>
+          <div>2026年4月8日</div>
         </div>
       
       
@@ -390,17 +405,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                  </article>
-                </div>
               
             </div>
 
