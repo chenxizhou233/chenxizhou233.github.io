@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>BigData</title>
+    <link href="/posts/6694cda0.html"/>
+    <url>/posts/6694cda0.html</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MathII</title>
+    <link href="/posts/2a7446c7.html"/>
+    <url>/posts/2a7446c7.html</url>
+    
+    <content type="html"><![CDATA[<p>新学期第一堂 lecture，得计点笔记，防止发生 4.0 惨案。</p><h2 id="algebraic-structure"><a class="markdownIt-Anchor" href="#algebraic-structure"></a> Algebraic structure</h2><p>关于 set 的图像有一个问题： 对于虚线表示的舍去边界的图，注意在线段拐点画<strong>空心圆</strong>。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>OSCamp学习笔记</title>
     <link href="/posts/cde1545b.html"/>
     <url>/posts/cde1545b.html</url>
@@ -46,7 +78,7 @@
     <link href="/posts/7323425a.html"/>
     <url>/posts/7323425a.html</url>
     
-    <content type="html"><![CDATA[<h2 id="verilog基础"><a class="markdownIt-Anchor" href="#verilog基础"></a> Verilog基础</h2><p>原件声明：</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> (<span class="hljs-keyword">input</span> a,b,c,<span class="hljs-keyword">output</span> x,y,z,t)<br>    <span class="hljs-keyword">assign</span> &#123;x,y,z,t&#125;=&#123;a,b,c,c&#125;;<br>    <span class="hljs-comment">//这个是**确定位宽时**的赋值语法糖</span><br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="verilog基础"><a class="markdownIt-Anchor" href="#verilog基础"></a> Verilog基础</h2><p>原件声明：</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> (<span class="hljs-keyword">input</span> a,b,c,<span class="hljs-keyword">output</span> x,y,z,t)<br>    <span class="hljs-keyword">assign</span> &#123;x,y,z,t&#125;=&#123;a,b,c,c&#125;;<br>    <span class="hljs-comment">//这个是**确定位宽时**的赋值语法糖</span><br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure><h2 id="reset-sync-vs-async"><a class="markdownIt-Anchor" href="#reset-sync-vs-async"></a> Reset： Sync vs. Async</h2><p>被这个整懵了，记录一下。</p>]]></content>
     
     
     

@@ -19,22 +19,22 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Verilog基础 原件声明： 1234module (input a,b,c,output x,y,z,t)    assign &#123;x,y,z,t&#125;&#x3D;&#123;a,b,c,c&#125;;    &#x2F;&#x2F;这个是**确定位宽时**的赋值语法糖endmodule  Reset： Sync vs. Async 被这个整懵了，记录一下。">
+    <meta name="description" content="记录一下我记忆中几次可能是她有主动交流的迹象。防止之后黑泥溢出胡乱释放恶意（其实已经释放过了） 一下都基于我当时因为很久没有实质性答复，所以一点就炸的基础上。 首先就是之后的那个周末，我的凳子和她的桌子上还是放了个东西的，但我直接把椅子往前一推，任其掉落。 然后就是她的脚一往前伸我就踩。  越写越觉得真 cs 啊，真 3 岁小孩水平啊。远离垃圾人是对的🙏。  之后还有两排之间的超大 gap，直接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一生一芯E阶段学习笔记">
-<meta property="og:url" content="https://chenxizhou233.github.io/posts/7323425a.html">
+<meta property="og:title" content="强要面子-20260412">
+<meta property="og:url" content="https://chenxizhou233.github.io/posts/441440b9.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="Verilog基础 原件声明： 1234module (input a,b,c,output x,y,z,t)    assign &#123;x,y,z,t&#125;&#x3D;&#123;a,b,c,c&#125;;    &#x2F;&#x2F;这个是**确定位宽时**的赋值语法糖endmodule  Reset： Sync vs. Async 被这个整懵了，记录一下。">
+<meta property="og:description" content="记录一下我记忆中几次可能是她有主动交流的迹象。防止之后黑泥溢出胡乱释放恶意（其实已经释放过了） 一下都基于我当时因为很久没有实质性答复，所以一点就炸的基础上。 首先就是之后的那个周末，我的凳子和她的桌子上还是放了个东西的，但我直接把椅子往前一推，任其掉落。 然后就是她的脚一往前伸我就踩。  越写越觉得真 cs 啊，真 3 岁小孩水平啊。远离垃圾人是对的🙏。  之后还有两排之间的超大 gap，直接">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-02-27T05:34:03.000Z">
-<meta property="article:modified_time" content="2026-04-10T10:48:20.302Z">
+<meta property="article:published_time" content="2026-04-11T17:57:06.000Z">
+<meta property="article:modified_time" content="2026-04-12T00:33:28.657Z">
 <meta property="article:author" content="Xizhou Chen">
-<meta property="article:tag" content="硬件">
+<meta property="article:tag" content="日记">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>一生一芯E阶段学习笔记 - Fulereneee</title>
+  <title>强要面子-20260412 - Fulereneee</title><meta name="robots" content="noindex">
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="一生一芯E阶段学习笔记"></span>
+            <span id="subtitle" data-typed-text="强要面子-20260412"></span>
           
         </div>
 
@@ -228,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-02-27 13:34" pubdate>
-          2026年2月27日 下午
+        <time datetime="2026-04-12 01:57" pubdate>
+          2026年4月12日 凌晨
         </time>
       </span>
     
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          55 字
+          842 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -297,12 +297,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">一生一芯E阶段学习笔记</h1>
+            <h1 id="seo-header">强要面子-20260412</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年4月10日 晚上
+                    本文最后更新于 2026年4月12日 早上
                   
                 
               </p>
@@ -310,12 +310,33 @@
             
               <div class="markdown-body">
                 
-                <h2 id="verilog基础"><a class="markdownIt-Anchor" href="#verilog基础"></a> Verilog基础</h2>
-<p>原件声明：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> (<span class="hljs-keyword">input</span> a,b,c,<span class="hljs-keyword">output</span> x,y,z,t)<br>    <span class="hljs-keyword">assign</span> &#123;x,y,z,t&#125;=&#123;a,b,c,c&#125;;<br>    <span class="hljs-comment">//这个是**确定位宽时**的赋值语法糖</span><br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
-<h2 id="reset-sync-vs-async"><a class="markdownIt-Anchor" href="#reset-sync-vs-async"></a> Reset： Sync vs. Async</h2>
-<p>被这个整懵了，记录一下。</p>
-
+                <p>记录一下我记忆中几次可能是她有主动交流的迹象。防止之后黑泥溢出胡乱释放恶意（其实已经释放过了）</p>
+<p>一下都基于我当时因为很久没有实质性答复，所以一点就炸的基础上。</p>
+<p>首先就是之后的那个周末，我的凳子和她的桌子上还是放了个东西的，但我直接把椅子往前一推，任其掉落。</p>
+<p>然后就是她的脚一往前伸我就踩。</p>
+<blockquote>
+<p>越写越觉得真 cs 啊，真 3 岁小孩水平啊。远离垃圾人是对的🙏。</p>
+</blockquote>
+<p>之后还有两排之间的超大 gap，直接无视掉了，</p>
+<p>还有是信大回来，我出门扔苹果核，她应该是跟出来了，我转身进入男 WC。</p>
+<blockquote>
+<p>是人？真气笑了</p>
+</blockquote>
+<p>以及操场散步，她应该是下楼了，我又一次无视了。</p>
+<p>这么一看，最后老死不相往来的架势属实是自己作的，不亏。</p>
+<p>为什么又突然想到这个呢？好问题，感觉是因为现阶段还没有新喜欢的人所以一直在反思找之前的锅？还是放不吧。主要原因还就是那个觉得自己能做得更好，但感觉这么几次总结下来，自己当时确实是个非常自我为中心，情绪化，幼稚的 sb，而且很遗憾，没什么改变的迹象。所以大概让我再回去也真的没法变得更好了吧。</p>
+<p>就像当时她在发烧，一次从澡堂往教室走遇见光速逃走，教室里也没有帮忙接个水啥的，一直觉得得“师出有名”（现在好像也是这样，无语了），走的时候也只敢远眺，胆小完了。这种瞻前顾后，犹豫不决，感觉现在依然没有改掉。</p>
+<p>还有那个放完《月牙湾》往柜子上放的蝴蝶，估计也是被其他人拿走了吧。</p>
+<blockquote>
+<p>又一次自我为中心了，人家真的需要你这些东西吗？这么一说还有眼霜，还好没送，感觉那个确实有点过于便宜而且人家也不一定需要你给她整这种东西啊。</p>
+</blockquote>
+<p>总感觉是小时候没有耳濡目染的环境，但其实长大后还真没啥地方让我能学习“充满关爱”的相处模式。不把这个解决，感觉要一直人机下去了 QwQ。</p>
+<p>哦还有之前知乎看的回答很有意思，说中国很欠缺那种“两个路人，某个时间点，我被你吸引，你被我吸引，两个人保持一种暧昧关系，然后二人各自离开，互不打扰”的交流模式，导致两个人一到一起，女生防备男生功利，或是相互冷淡。</p>
+<p>显然，我并没有把我好度，把上述模式的理想状态整的一团糟。现在看来可能她和韩梁是处于这种状态的，但我纯傻没看出来，乱了自己，煞了风景啊。</p>
+<p>哎哎，感觉只能来者之可追了。期待自己如果真的能被看上的话，下一次少犯点畜吧。</p>
+<p>哎，人生只若初见，谁曾想后门出门时的相互谦让竟会牵扯出如此多的事。</p>
+<p>Dich kennen heist dich liben.</p>
+<!-- flag of hidden posts -->
                 
               </div>
             
@@ -327,7 +348,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%A1%AC%E4%BB%B6/" class="print-no-link">#硬件</a>
+        <a href="/tags/%E6%97%A5%E8%AE%B0/" class="print-no-link">#日记</a>
       
     </div>
   
@@ -339,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>一生一芯E阶段学习笔记</div>
-      <div>https://chenxizhou233.github.io/posts/7323425a.html</div>
+      <div>强要面子-20260412</div>
+      <div>https://chenxizhou233.github.io/posts/441440b9.html</div>
     </div>
     <div class="license-meta">
       
@@ -352,7 +373,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年2月27日</div>
+          <div>2026年4月12日</div>
         </div>
       
       
@@ -379,23 +400,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/posts/29a6473d.html" title="伊朗战争小记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">伊朗战争小记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                  </article>
-                </div>
               
             </div>
 
