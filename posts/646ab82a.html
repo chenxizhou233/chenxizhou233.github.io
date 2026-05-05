@@ -19,15 +19,15 @@
   <meta name="author" content="Xizhou Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="布尔代数  各种 Normal Form 分为 CNF，DNF，CCNF，CDNF。 CNF 和 CCNF 选的是 truth table 为 0 的行。全 OR 了再 AND. DNF 和 CDNF 选的是 truth table 为 1 的行，全 AND 了再 OR.  Chisel Chisel 和 Verilog 区别还是挺大的，写点东西记录一下。  Scala 语言相关 首先，Chis">
+    <meta name="description" content="布尔代数  各种 Normal Form 分为 CNF，DNF，CCNF，CDNF。 CNF 和 CCNF 选的是 truth table 为 0 的行。全 OR 了再 AND. DNF 和 CDNF 选的是 truth table 为 1 的行，全 AND 了再 OR.  电路和 Inductive Proof  电路 Cost：基本门的数量：这门课上是 {XOR,AND,OR,NOT} 一类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SysArch">
 <meta property="og:url" content="https://chenxizhou233.github.io/posts/646ab82a.html">
 <meta property="og:site_name" content="Fulereneee">
-<meta property="og:description" content="布尔代数  各种 Normal Form 分为 CNF，DNF，CCNF，CDNF。 CNF 和 CCNF 选的是 truth table 为 0 的行。全 OR 了再 AND. DNF 和 CDNF 选的是 truth table 为 1 的行，全 AND 了再 OR.  Chisel Chisel 和 Verilog 区别还是挺大的，写点东西记录一下。  Scala 语言相关 首先，Chis">
+<meta property="og:description" content="布尔代数  各种 Normal Form 分为 CNF，DNF，CCNF，CDNF。 CNF 和 CCNF 选的是 truth table 为 0 的行。全 OR 了再 AND. DNF 和 CDNF 选的是 truth table 为 1 的行，全 AND 了再 OR.  电路和 Inductive Proof  电路 Cost：基本门的数量：这门课上是 {XOR,AND,OR,NOT} 一类">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-24T02:24:17.000Z">
-<meta property="article:modified_time" content="2026-04-27T20:27:45.277Z">
+<meta property="article:modified_time" content="2026-05-04T10:51:15.953Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="Hardware">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          447 字
+          639 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          4 分钟
+          6 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年4月28日 凌晨
+                    本文最后更新于 2026年5月4日 晚上
                   
                 
               </p>
@@ -315,6 +315,19 @@
 <p>分为 CNF，DNF，CCNF，CDNF。</p>
 <p>CNF 和 CCNF 选的是 truth table 为 0 的行。全 OR 了再 AND.<br />
 DNF 和 CDNF 选的是 truth table 为 1 的行，全 AND 了再 OR.</p>
+<h2 id="电路和-inductive-proof"><a class="markdownIt-Anchor" href="#电路和-inductive-proof"></a> 电路和 Inductive Proof</h2>
+<h2 id="电路"><a class="markdownIt-Anchor" href="#电路"></a> 电路</h2>
+<p>Cost：基本门的数量：这门课上是 {XOR,AND,OR,NOT} 一类<br />
+Depth： Critical Path 的长度</p>
+<h3 id="proof"><a class="markdownIt-Anchor" href="#proof"></a> Proof</h3>
+<p>看来这里是真的很喜欢归纳法证明啊。</p>
+<p>因为有些电路结构都是大体相同的，可以递归定义（如加法器）。那么我们如何证明这个东西 computes 一个 specification呢？ 对喽，归纳法。</p>
+<p>这里电路结构一般都是画出来的：标好号，然后类似普通结构归纳</p>
+<ol>
+<li>先给出（直接画出来）基本电路的定义：最小单元（e.g. 一位的 full adder）</li>
+<li>通过 IH， 证明 k 位的电路（通过画一个封装好的 k-1 位电路，加一点结构，再封装成 k 位电路来表示）也是对的</li>
+</ol>
+<p>然后就得证了。</p>
 <h2 id="chisel"><a class="markdownIt-Anchor" href="#chisel"></a> Chisel</h2>
 <p>Chisel 和 Verilog 区别还是挺大的，写点东西记录一下。</p>
 <h3 id="scala-语言相关"><a class="markdownIt-Anchor" href="#scala-语言相关"></a> Scala 语言相关</h3>
