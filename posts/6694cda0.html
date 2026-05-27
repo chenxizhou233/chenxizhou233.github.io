@@ -27,7 +27,7 @@
 <meta property="og:description" content="Week1 这个主要就是 ER Model  矩形代表一个类 棱形代表“操作” 椭圆代表“key”，带下划线的是 unique 的 key。 六边形里面一个“are”， 代表继承关系。   1:N N:M 关系 记录一道类型题：  这个题的关键是 “Functional Determined”. 例如这道题的 1，2 小问，问题只包含了三个实体中的两个，而这样就不能 “Functional De">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-09T02:16:16.000Z">
-<meta property="article:modified_time" content="2026-05-05T08:20:33.502Z">
+<meta property="article:modified_time" content="2026-05-26T10:04:03.755Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="Data Science">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          609 字
+          682 字
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年5月5日 下午
+                    本文最后更新于 2026年5月26日 晚上
                   
                 
               </p>
@@ -367,6 +367,10 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> column1,column2<br><span class="hljs-keyword">FROM</span> table1<br><span class="hljs-keyword">JOIN</span> table2<br><span class="hljs-keyword">WHERE</span> some_condition<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> some_column<br><span class="hljs-keyword">HAVING</span> some_property<br></code></pre></td></tr></table></figure>
 <p>然后基本逻辑相关：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">OR</span> <span class="hljs-keyword">AND</span> <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span><br><span class="hljs-comment">-- NULL判断：</span><br><span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span><br></code></pre></td></tr></table></figure>
+<h3 id="week5"><a class="markdownIt-Anchor" href="#week5"></a> Week5</h3>
+<p>这一周主要是一些优化方法，简单的说就是：</p>
+<p>“能提前筛选的就先筛，减少工作量”。</p>
+<p>然后还有一个小点就是 Relation Algebra 里面选列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> 默认是去重的，因为是 Set Semantics, 想要不去重，就得用 Bag Semantics, 可以显式指定。</p>
 
                 
               </div>
