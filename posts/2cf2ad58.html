@@ -27,7 +27,7 @@
 <meta property="og:description" content="各阶段任务仓库  阶段一：爬虫 （已完成爬虫下载部分的初步实现，还需要补充性能分析）   Week1 这周的的会议主要交流了一下个人参加此次项目阶段的主要目的和想法。 由于时差，本人未能及时参会，故在此记录一下参加训练营的想法。 我是萨尔大学的本科大一学生，国内高考上了北京邮电大学的海南分校，对操作系统以及底层硬件相关很感兴趣，故报名参加此次训练营活动。现在主要还是在一个兴趣探索的阶段。这次在三">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-15T01:08:47.000Z">
-<meta property="article:modified_time" content="2026-05-31T07:40:27.401Z">
+<meta property="article:modified_time" content="2026-06-07T06:49:05.311Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          846 字
+          955 字
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年5月31日 下午
+                    本文最后更新于 2026年6月7日 下午
                   
                 
               </p>
@@ -410,15 +410,66 @@
 <li>适合系统编程</li>
 </ol>
 <p>因此现在 Rust 采用了如今的 Async 实现。</p>
+<h2 id="week3"><a class="markdownIt-Anchor" href="#week3"></a> Week3</h2>
+<h3 id="优先级扩展"><a class="markdownIt-Anchor" href="#优先级扩展"></a> 优先级扩展</h3>
+<p>在 《200行实现Future中》 扩展了优先级支持，采用了分优先级队列并按等待时间提高优先级的策略。测出本实现在高优先级任务上强于 Tokio，平均运行时则是 Tokio 更强，符合预期。</p>
+<blockquote>
+<p>数据为 100 次运行的平均值，采用了任务一中的预缓存优化。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th style="text-align:right">Avg successful tasks (SF/Tokio)</th>
+<th style="text-align:right">SimpleFuture avg finish</th>
+<th style="text-align:right">SimpleFuture p50 finish</th>
+<th style="text-align:right">Tokio avg finish</th>
+<th style="text-align:right">Tokio p50 finish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High</td>
+<td style="text-align:right">9.03 / 9.00</td>
+<td style="text-align:right">0.002 s</td>
+<td style="text-align:right">0.002 s</td>
+<td style="text-align:right">0.004 s</td>
+<td style="text-align:right">0.002 s</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td style="text-align:right">10.00 / 10.00</td>
+<td style="text-align:right">0.005 s</td>
+<td style="text-align:right">0.005 s</td>
+<td style="text-align:right">0.005 s</td>
+<td style="text-align:right">0.004 s</td>
+</tr>
+<tr>
+<td>Low</td>
+<td style="text-align:right">13.00 / 13.00</td>
+<td style="text-align:right">0.008 s</td>
+<td style="text-align:right">0.008 s</td>
+<td style="text-align:right">0.005 s</td>
+<td style="text-align:right">0.005 s</td>
+</tr>
+<tr>
+<td>Overall</td>
+<td style="text-align:right">32.03 / 32.00</td>
+<td style="text-align:right">0.006 s</td>
+<td style="text-align:right">0.006 s</td>
+<td style="text-align:right">0.005 s</td>
+<td style="text-align:right">0.005 s</td>
+</tr>
+</tbody>
+</table>
 <h3 id="初探-embassy"><a class="markdownIt-Anchor" href="#初探-embassy"></a> 初探 Embassy</h3>
 <p>Embassy 感觉可以理解为一个为嵌入式设备的设计的 “Tokio”。</p>
 <p>传统 MCU 开发一般都需要 RTOS，手写状态机，但如果我们用了 Rust 的 async/await 的话，状态机是生成好的。</p>
-<p>此外，OS 也不需要了，因为我们可以使用 Cooperative scheduling 代替 RTOS 进行调度。</p>
 <p>这样我们就能得到一个很契合 MCU 的一个操作流程，因为它：</p>
 <ol>
-<li>不需要线程栈</li>
+<li>不需要线程栈，减少浪费</li>
 <li>内存大小编译期已知</li>
-<li></li>
+<li>…</li>
 </ol>
 
                 
