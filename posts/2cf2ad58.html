@@ -27,7 +27,7 @@
 <meta property="og:description" content="各阶段任务仓库  阶段一：爬虫 （已完成爬虫下载部分的初步实现，还需要补充性能分析）   Week1 这周的的会议主要交流了一下个人参加此次项目阶段的主要目的和想法。 由于时差，本人未能及时参会，故在此记录一下参加训练营的想法。 我是萨尔大学的本科大一学生，国内高考上了北京邮电大学的海南分校，对操作系统以及底层硬件相关很感兴趣，故报名参加此次训练营活动。现在主要还是在一个兴趣探索的阶段。这次在三">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-15T01:08:47.000Z">
-<meta property="article:modified_time" content="2026-06-07T08:22:55.564Z">
+<meta property="article:modified_time" content="2026-06-13T18:43:23.655Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          964 字
+          1.2k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年6月7日 下午
+                    本文最后更新于 2026年6月14日 凌晨
                   
                 
               </p>
@@ -471,6 +471,22 @@
 <li>内存大小编译期已知</li>
 <li>…</li>
 </ol>
+<h2 id="week4"><a class="markdownIt-Anchor" href="#week4"></a> Week4</h2>
+<h3 id="ipc-优化的历史研究"><a class="markdownIt-Anchor" href="#ipc-优化的历史研究"></a> IPC 优化的历史研究</h3>
+<p>梳理了 <a href="">IPC 的发展流程</a>，尝试获取 IPC 优化的灵感。</p>
+<h3 id="starryos-的-ipc-部分研究"><a class="markdownIt-Anchor" href="#starryos-的-ipc-部分研究"></a> StarryOS 的 IPC 部分研究</h3>
+<p>在阅读源码后发现，StarryOS 的 SysV IPC Message Queue 在用户态 ABI 上保持与 Linux 一致的同步系统调用语义，但其内核阻塞等待路径已接入基于 Future/Waker 的异步调度框架。</p>
+<p>当 msgsnd 或 msgrcv 的执行条件暂不满足时，系统通过 WaitQueue::wait_if 构造 WaitIfFuture；若 Future 返回 Pending，当前任务被注册到等待队列并让出 CPU。待消息队列状态发生变化后，相应事件通过 Waker 将任务重新加入就绪队列，由调度器再次运行该任务并重新检查等待条件。</p>
+<p>因此这部分能做的的工作可能还有：</p>
+<ul>
+<li>优化锁颗粒度</li>
+<li>精准唤醒</li>
+<li>类似 L4 的 Lazy Scheduling 减少入队次数</li>
+<li>…</li>
+</ul>
+<p>但实现本身已经是异步的了。</p>
+<h3 id="tokio爬虫程序的动态分析"><a class="markdownIt-Anchor" href="#tokio爬虫程序的动态分析"></a> Tokio爬虫程序的动态分析</h3>
+<p>使用 Rust-gdb 对之前写的爬虫程序进行了动态分析。整体过程验证了我对 Rust 这套状态机异步的理解。具体总结<a href="">在这里</a>。</p>
 
                 
               </div>

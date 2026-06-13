@@ -286,6 +286,130 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/8555bce6.html" target="_self">
+          Tokio爬虫动态跟踪
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8555bce6.html" target="_self">
+        <div>
+          Tokio 异步状态机跟踪要点 完整动态跟踪记录见 track.log，可复现实验脚本包括：  gdb_track_v1_single.gdb：单并发，跟踪主要 await 的 poll / resume 流程。 gdb_track_v2_multi4.gdb：并发 4，观察多个子 future 状态机的存储和轮换。 gdb_track.gdb：当前默认脚本，内容对应并发 4 版本。   调用链
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-06-13 20:02" pubdate>
+              2026-06-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/OS/">#OS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/261f074f.html" target="_self">
+          IPC优化与历史总结
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/261f074f.html" target="_self">
+        <div>
+          功能实现阶段 最早期的 IPC 更多是为了解决功能问题，也就是让不同进程之间可以交换数据或信号。 经典结构包括：  Pipe Signal Message Queue Shared Memory  这些模型现在依然被使用，只是不同模型适合不同场景。 最基础的通信路径可以抽象成： 12345Process A↓Kernel IPC Mechanism↓Process B 这一阶段的重点还不是极致性
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-06-08 13:46" pubdate>
+              2026-06-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/OS/">#OS</a>
+            
+              <a href="/tags/IPC/">#IPC</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d27e74af.html" target="_self">
+          Embassy-sync学习笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d27e74af.html" target="_self">
+        <div>
+          Channel 这里采用了 RawMutex 作为锁，更加底层。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-06-08 13:07" pubdate>
+              2026-06-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/OS/">#OS</a>
+            
+              <a href="/tags/Embassy/">#Embassy</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/9ee7703c.html" target="_self">
           Prog2
         </a>
@@ -506,126 +630,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/cde1545b.html" target="_self">
-          OSCamp学习笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/cde1545b.html" target="_self">
-        <div>
-          Error 这一部分是学习OCaml（，采用经典的 None/Some(n) 形式。 然后Rust还有自己特化的一个错误类型 Result&lt;type,errorType&gt;, 它包括正常运行时的 Ok(n) 和错误时的 Err(e).  Error2 一个小知识点， 整个返回类型如果为 Result，可以在相关内容后加一个 ?，和对应 match 表达式一个效果。  Error3 那么
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-12 09:16" pubdate>
-              2026-03-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Rust/">#Rust</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/29a6473d.html" target="_self">
-          伊朗战争小记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/29a6473d.html" target="_self">
-        <div>
-          看到一个分析被荒原了，记录一下。 首先，美国现在出口最多的东西是石油，但价格一直低迷。伊朗是重要的石油输出国之一。 因此可以看到每当国际油价下探到 55 usd 的时候，美国就会说 “我要打伊朗”。然后油价上涨，循环往复。 那么这次为什么真打了呢？因为之前把委内瑞拉打下来以后，发现国际油价不到 80 usd 都是赔钱（记录的时候期货已经90 usd 了），但你打下来不用纯浪费，所以就打一打（这点确
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-08 10:12" pubdate>
-              2026-03-08
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%9F%A5%E4%B9%8E/">#知乎</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/7323425a.html" target="_self">
-          一生一芯E阶段学习笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7323425a.html" target="_self">
-        <div>
-          Verilog基础 原件声明： 1234module (input a,b,c,output x,y,z,t)    assign &#123;x,y,z,t&#125;=&#123;a,b,c,c&#125;;    //这个是**确定位宽时**的赋值语法糖endmodule  Reset： Sync vs. Async 被这个整懵了，记录一下。 简单来说就是 sync reset 只需要在正
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-02-27 13:34" pubdate>
-              2026-02-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%A1%AC%E4%BB%B6/">#硬件</a>
             
           </div>
         

@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xizhou Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="功能实现阶段 最早期的 IPC 更多是为了解决功能问题，也就是让不同进程之间可以交换数据或信号。 经典结构包括：  Pipe Signal Message Queue Shared Memory  这些模型现在依然被使用，只是不同模型适合不同场景。 最基础的通信路径可以抽象成： 12345Process A↓Kernel IPC Mechanism↓Process B 这一阶段的重点还不是极致性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPC优化与历史总结">
+<meta property="og:url" content="https://chenxizhou233.github.io/posts/261f074f.html">
+<meta property="og:site_name" content="Fulereneee">
+<meta property="og:description" content="功能实现阶段 最早期的 IPC 更多是为了解决功能问题，也就是让不同进程之间可以交换数据或信号。 经典结构包括：  Pipe Signal Message Queue Shared Memory  这些模型现在依然被使用，只是不同模型适合不同场景。 最基础的通信路径可以抽象成： 12345Process A↓Kernel IPC Mechanism↓Process B 这一阶段的重点还不是极致性">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-08T05:46:03.000Z">
+<meta property="article:modified_time" content="2026-06-13T18:21:13.057Z">
+<meta property="article:author" content="Xizhou Chen">
+<meta property="article:tag" content="OS">
+<meta property="article:tag" content="IPC">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>IPC优化与历史总结 - Fulereneee</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxizhou233.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"wk30xdwKiShMjcvIxmxwYC8m-gzGzoHsz","app_key":"seUi1sMhimu9EShdcBKjcgx2","server_url":"https://wk30xdwk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/78555284_p0.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="IPC优化与历史总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-08 13:46" pubdate>
+          2026年6月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">IPC优化与历史总结</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年6月14日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="功能实现阶段"><a class="markdownIt-Anchor" href="#功能实现阶段"></a> 功能实现阶段</h2>
+<p>最早期的 IPC 更多是为了解决功能问题，也就是让不同进程之间可以交换数据或信号。</p>
+<p>经典结构包括：</p>
+<ul>
+<li>Pipe</li>
+<li>Signal</li>
+<li>Message Queue</li>
+<li>Shared Memory</li>
+</ul>
+<p>这些模型现在依然被使用，只是不同模型适合不同场景。</p>
+<p>最基础的通信路径可以抽象成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Process A<br>↓<br>Kernel IPC Mechanism<br>↓<br>Process B<br></code></pre></td></tr></table></figure>
+<p>这一阶段的重点还不是极致性能，而是让隔离的进程能够安全通信。</p>
+<h2 id="microkernel-与-ipc"><a class="markdownIt-Anchor" href="#microkernel-与-ipc"></a> MicroKernel 与 IPC</h2>
+<p>后来，Mach 提出：</p>
+<blockquote>
+<p>Everything is Message</p>
+</blockquote>
+<p>根据这个理念，MicroKernel 开始把很多传统内核服务拆到用户态。</p>
+<p>原来在 Monolithic Kernel 中，路径通常是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Application<br>↓<br>System Call<br>↓<br>Kernel Service<br></code></pre></td></tr></table></figure>
+<p>而在 MicroKernel 中，很多服务变成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">Application<br>↓<br>IPC<br>↓<br>User Space Server<br>↓<br>IPC<br>↓<br>Application<br></code></pre></td></tr></table></figure>
+<p>也就是说，原来一次内核内部函数调用，可能变成了跨地址空间的消息传递。</p>
+<p>这个设计让系统结构更清晰，也更容易隔离不同服务。但早期测试时性能并不理想，核心原因是 IPC 太贵。</p>
+<p>主要开销包括：</p>
+<ul>
+<li>上下文和地址空间切换</li>
+<li>数据复制</li>
+<li>调度器参与</li>
+<li>Kernel Entry / Exit</li>
+</ul>
+<p>因此，MicroKernel 的性能问题逐渐集中到了 IPC 性能上。</p>
+<h2 id="l4-的优化"><a class="markdownIt-Anchor" href="#l4-的优化"></a> L4 的优化</h2>
+<p>后来 L4 的作者 Jochen Liedtke 发现，微内核的主要性能瓶颈就是 IPC，于是开始系统性优化 IPC。</p>
+<p>优化目标主要是减少 Copy、减少 Scheduler 参与、减少不必要的 Queue 操作，并让常见 IPC 走 Fast Path。</p>
+<h3 id="区分-short-long-path"><a class="markdownIt-Anchor" href="#区分-short-long-path"></a> 区分 Short /Long Path</h3>
+<p>L4 发现，大部分 IPC 消息都很短，并且 Receiver 往往已经在等待。</p>
+<p>如果这种场景仍然走完整路径，就会浪费很多调度和队列维护成本。</p>
+<p>因此，L4 将 IPC 区分为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">Short IPC<br>↓<br>Fast Path<br><br>Long IPC<br>↓<br>Slow Path<br></code></pre></td></tr></table></figure>
+<p>Short IPC 用于处理最常见的小消息场景，尽可能跳过复杂逻辑；Long IPC 则处理更复杂、更少见的情况。</p>
+<h3 id="值的传递"><a class="markdownIt-Anchor" href="#值的传递"></a> 值的传递</h3>
+<p>对于小消息，L4 直接使用寄存器传递：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Sender Register<br>↓<br>Kernel Fast Path<br>↓<br>Receiver Register<br></code></pre></td></tr></table></figure>
+<p>这样可以避免把消息先复制到内核缓冲区，再从内核缓冲区复制到接收方。</p>
+<p>对于大消息，则可以通过页表映射减少复制：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Sender Page<br>↓<br>Page Mapping<br>↓<br>Receiver Address Space<br></code></pre></td></tr></table></figure>
+<p>核心就是让数据尽量不要经过额外的内核缓冲区复制。</p>
+<h3 id="scheduler-相关"><a class="markdownIt-Anchor" href="#scheduler-相关"></a> Scheduler 相关</h3>
+<p>如果内核已经知道 Receiver 正在等待，那么 IPC 时可以直接切到对应的 Server。</p>
+<p>Fast Path 可以变成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Sender<br>↓<br>Kernel<br>↓<br>Receiver<br></code></pre></td></tr></table></figure>
+<p>这样可以减少调度器参与。</p>
+<p>此外，L4 还使用 Lazy Scheduling 减少等待队列修改。</p>
+<p>Lazy Scheduling 的思路是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">Thread 状态变化<br>↓<br>先只修改 Thread State<br>↓<br>真正需要调度时<br>↓<br>再清理或更新 Queue<br></code></pre></td></tr></table></figure>
+<p>核心是把线程状态变化和调度队列维护解耦，让短时间重复进出的操作不必立刻反映到队列上。</p>
+<p>但以上的优化还没有解决 Context Switch 的问题。</p>
+<h2 id="shared-memory-与-lock-free-queue"><a class="markdownIt-Anchor" href="#shared-memory-与-lock-free-queue"></a> Shared Memory 与 Lock-Free Queue</h2>
+<p>即使单次 IPC 已经很快，频繁通信仍然会产生：</p>
+<ul>
+<li>Kernel Entry</li>
+<li>Context Switch</li>
+<li>Scheduler 开销</li>
+<li>Message Copy</li>
+</ul>
+<p>因此，后续高性能 IPC 开始采用 Shared Memory + Notification。</p>
+<p>数据不再通过每次 IPC 复制，而是放在共享内存中：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Sender<br>↓<br>Shared Ring Buffer<br>↓<br>Receiver<br></code></pre></td></tr></table></figure>
+<p>发送方和接收方通常只需要维护 <code>head</code> 和 <code>tail</code>。在 SPSC 等简单场景中，可以使用原子变量实现 Lock-Free Queue，从而减少锁竞争。</p>
+<p>其核心变化是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">原来：<br>IPC = 数据传递 + 通知<br><br>后来：<br>Shared Memory = 数据传递<br>IPC / Interrupt / eventfd = 通知<br></code></pre></td></tr></table></figure>
+<h2 id="event-driven从阻塞等待变成事件通知"><a class="markdownIt-Anchor" href="#event-driven从阻塞等待变成事件通知"></a> Event-driven：从阻塞等待变成事件通知</h2>
+<p>传统阻塞式模型中，每个线程会等待自己的 I/O：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">Thread<br>↓<br>read()<br>↓<br>Block<br>↓<br>Wakeup<br></code></pre></td></tr></table></figure>
+<p>大量连接通常意味着大量线程以及大量 Context Switch。</p>
+<p><code>epoll</code> 将其改成事件驱动模型：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">注册感兴趣的 fd<br>↓<br>epoll_wait()<br>↓<br>内核返回 Ready fd<br></code></pre></td></tr></table></figure>
+<p>应用不需要为每个连接创建一个阻塞线程，而是可以使用少量线程处理大量事件。</p>
+<p>这一阶段主要减少了：</p>
+<ul>
+<li>阻塞线程数量</li>
+<li>无效轮询</li>
+<li>线程上下文切换</li>
+<li>调度器压力</li>
+</ul>
+<p>不过，<code>epoll</code> 只表示某个 I/O 已经 Ready。应用被唤醒后，通常仍然需要调用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">read();<br>write();<br></code></pre></td></tr></table></figure>
+<p>来真正执行 I/O。</p>
+<h2 id="io_uring提交与完成解耦"><a class="markdownIt-Anchor" href="#io_uring提交与完成解耦"></a> io_uring：提交与完成解耦</h2>
+<p><code>io_uring</code> 进一步把 I/O 的提交与完成拆开：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">Application<br>↓<br>Submission Queue<br>↓<br>Kernel 执行 I/O<br>↓<br>Completion Queue<br>↓<br>Application<br></code></pre></td></tr></table></figure>
+<p>其中，SQ 是 Submission Queue，CQ 是 Completion Queue。用户态和内核共享这些 Ring Buffer。</p>
+<p>应用可以批量提交多个请求：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Request 1<br>Request 2<br>Request 3<br>↓<br>一次提交<br></code></pre></td></tr></table></figure>
+<p>内核完成后，再批量写入 CQ。</p>
+<p>其主要优化包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">逐请求 System Call<br>↓<br>共享队列与批量提交<br><br>同步等待结果<br>↓<br>异步 Completion<br><br>每个请求单独唤醒<br>↓<br>批量处理完成事件<br></code></pre></td></tr></table></figure>
+<p>这与 Shared Memory + Notification 的模式非常相似：SQ / CQ 负责传递数据，系统调用或内核线程负责通知和处理。</p>
+<h2 id="async-runtime从线程调度转向任务调度"><a class="markdownIt-Anchor" href="#async-runtime从线程调度转向任务调度"></a> Async Runtime：从线程调度转向任务调度</h2>
+<p>Tokio 等异步运行时将操作系统提供的 I/O 事件转化为 Future 和 Waker。</p>
+<p>当 I/O 尚未完成时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">Future::poll()<br>↓<br>Poll::Pending<br>↓<br>保存 Waker<br>↓<br>任务暂停<br></code></pre></td></tr></table></figure>
+<p>当 <code>epoll</code> 或 <code>io_uring</code> 返回事件时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">I/O Event<br>↓<br>Waker::wake()<br>↓<br>任务重新进入 Runnable Queue<br>↓<br>Future 再次被 poll<br></code></pre></td></tr></table></figure>
+<p>因此，一个等待 I/O 的任务不需要一直占用一个操作系统线程。</p>
+<p>原来的模型是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">一个并发任务 ≈ 一个阻塞线程<br></code></pre></td></tr></table></figure>
+<p>异步运行时中则变成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">大量 Future<br>↓<br>复用少量 Worker Thread<br></code></pre></td></tr></table></figure>
+<p>优化重点也从 Process / Thread Context Switch 转向 Future 状态切换和用户态任务调度。</p>
+<p>不过，异步运行时并没有完全消灭调度，而是把一部分调度从内核移动到了用户态。</p>
+<h2 id="embassy中断直接唤醒-future"><a class="markdownIt-Anchor" href="#embassy中断直接唤醒-future"></a> Embassy：中断直接唤醒 Future</h2>
+<p>在 MCU 或裸机环境中，通常没有：</p>
+<ul>
+<li>epoll</li>
+<li>io_uring</li>
+<li>完整的操作系统线程</li>
+</ul>
+<p>Embassy 直接使用硬件中断作为异步事件源。</p>
+<p>Linux 异步运行时中的路径通常是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">Hardware Interrupt<br>↓<br>Kernel<br>↓<br>epoll / io_uring<br>↓<br>Runtime<br>↓<br>Waker<br>↓<br>Future<br></code></pre></td></tr></table></figure>
+<p>Embassy 中则可以缩短成硬件中断直接唤醒 Future：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">Hardware Interrupt<br>↓<br>Waker<br>↓<br>Future<br></code></pre></td></tr></table></figure>
+<p>因此，Embassy 减少了操作系统层次的参与，也适合静态内存和资源有限的嵌入式环境。</p>
+<h2 id="异步-ipc-优化主线"><a class="markdownIt-Anchor" href="#异步-ipc-优化主线"></a> 异步 IPC 优化主线</h2>
+<p>整体演进可以总结为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs text">L4 / seL4 优化单次 IPC Fast Path<br>↓<br>Shared Memory 减少数据 Copy<br>↓<br>Lock-Free Queue 减少 Lock 与竞争<br>↓<br>epoll 用 Ready Event 替代大量阻塞线程<br>↓<br>io_uring 用共享 SQ/CQ 解耦提交与完成<br>↓<br>Tokio 用 Future/Waker 替代一任务一线程<br>↓<br>Embassy 用硬件中断直接唤醒 Future<br></code></pre></td></tr></table></figure>
+<p>这些技术处于不同的系统层次，但优化目标基本一致：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">减少 Copy<br>减少 Lock<br>减少 System Call<br>减少 Context Switch<br>减少 Scheduler 参与<br>减少无效 Wakeup<br>增加 Batch Processing<br></code></pre></td></tr></table></figure>
+<p>从 L4 到现代异步运行时，优化重点逐渐发生了变化：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">最初：<br>让一次 IPC 更快<br><br>后来：<br>尽量减少 IPC 次数<br><br>再后来：<br>尽量避免阻塞线程和内核调度<br><br>最终：<br>使用共享内存、事件和状态机<br>完成异步的数据交换与任务执行<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/OS/" class="print-no-link">#OS</a>
+      
+        <a href="/tags/IPC/" class="print-no-link">#IPC</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>IPC优化与历史总结</div>
+      <div>https://chenxizhou233.github.io/posts/261f074f.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Xizhou Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/8555bce6.html" title="Tokio爬虫动态跟踪">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Tokio爬虫动态跟踪</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/d27e74af.html" title="Embassy-sync学习笔记">
+                        <span class="hidden-mobile">Embassy-sync学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wk30xdwKiShMjcvIxmxwYC8m-gzGzoHsz","appKey":"seUi1sMhimu9EShdcBKjcgx2","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://wk30xdwk.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
