@@ -27,7 +27,7 @@
 <meta property="og:description" content="Tokio 异步状态机跟踪要点 完整动态跟踪记录见 track.log，可复现实验脚本包括：  gdb_track_v1_single.gdb：单并发，跟踪主要 await 的 poll &#x2F; resume 流程。 gdb_track_v2_multi4.gdb：并发 4，观察多个子 future 状态机的存储和轮换。 gdb_track.gdb：当前默认脚本，内容对应并发 4 版本。   调用链">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-13T12:02:42.000Z">
-<meta property="article:modified_time" content="2026-06-13T18:43:33.591Z">
+<meta property="article:modified_time" content="2026-06-14T07:22:30.525Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          3.8k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          17 分钟
+          32 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年6月14日 凌晨
+                    本文最后更新于 2026年6月14日 下午
                   
                 
               </p>
@@ -383,6 +383,49 @@
 <li><code>FuturesUnordered</code> 保存这些子 future，并通过 ready queue 和 waker 在它们之间切换。</li>
 <li>外层 <code>Context</code>/poll 栈可以复用，真正区分任务的是子 future 自己的状态存储地址。</li>
 </ul>
+<h3 id="thread-与-tokio-task-的栈使用对比"><a class="markdownIt-Anchor" href="#thread-与-tokio-task-的栈使用对比"></a> Thread 与 Tokio task 的栈使用对比</h3>
+<p>这个项目里 thread 版本和 Tokio 版本的并发形态有一个关键差别：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">thread 版本:<br>std::thread::spawn<br>-&gt; 每个活跃下载任务对应一个 OS thread<br>-&gt; 每个 OS thread 有自己的线程栈<br>-&gt; 阻塞 I/O 等待时，整个线程连同调用栈一起被挂起<br><br>Tokio 版本:<br>Runtime::new().block_on(...)<br>-&gt; worker thread 负责反复 poll 多个 future<br>-&gt; async task 没有独立 OS 栈<br>-&gt; await 之后还要用的变量保存在 future frame / task node 中<br></code></pre></td></tr></table></figure>
+<p>在 thread 版本中，<code>spawn_thread_task</code> 会为每个活跃任务创建一个真正的系统线程。<code>task.run_sync_to(output)</code> 内部如果阻塞在网络或文件 I/O 上，保存现场主要依赖 OS thread 自己的栈和内核调度：函数调用链、返回地址、栈上局部变量会随着这个线程一起停住。恢复时也是同一个线程继续执行，所以从程序模型上看更像“调用栈没有离开，只是线程睡着了”。</p>
+<p>Tokio task 则不是这样。Rust async future 是 stackless coroutine：每次被 poll 时，它临时借用当前 worker thread 的普通调用栈；一旦遇到 <code>Pending</code>，这次 poll 调用返回，<code>sp/bp</code> 对应的栈帧可以被后续 poll 复用。gdb 中反复出现的 <code>0x7fffffff...</code> 地址，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">sp  = 0x7fffffff7020<br>bp  = 0x7fffffffcee0<br>_task_context = 0x7fffffff9c70<br></code></pre></td></tr></table></figure>
+<p>更像“当前这次 poll 正在使用的线程栈现场”。这些地址不唯一属于某一个下载任务；下一次 poll 另一个 future 时，同一段 worker 栈仍然可以被使用。</p>
+<p>真正区分 Tokio 子任务的是 future frame / 捕获状态区，例如并发 4 时看到的：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">北京大学       -&gt; 0x555556355d10<br>清华大学       -&gt; 0x555556353f10<br>中国人民大学   -&gt; 0x555556353b00<br>北京师范大学   -&gt; 0x555556340590<br></code></pre></td></tr></table></figure>
+<p>这些状态区保存了跨 <code>await</code> 仍然需要的内容：<code>task</code>、<code>url</code>、<code>output</code>、<code>response</code>、<code>bytes</code>，以及“现在应该从哪个 await 之后恢复”的状态编号。也就是说，Tokio 的“协程堆栈”并不是一条连续的私有栈，而是编译器生成的状态机对象；局部变量被拆成 future frame 里的字段，调用栈只在 poll 期间短暂存在。</p>
+<p>可以把两者压缩成下面这个对比：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs text">OS thread:<br>  并发单位      = 内核线程<br>  保存现场      = 线程寄存器 + 独立线程栈<br>  阻塞 I/O      = 挂起整个线程<br>  局部变量位置  = 普通调用栈为主<br>  切换成本      = 内核调度 / 线程上下文切换<br><br>Tokio task:<br>  并发单位      = Future 状态机实例<br>  保存现场      = future frame + waker + ready queue<br>  阻塞 I/O      = 返回 Pending，线程继续 poll 别的 task<br>  局部变量位置  = 跨 await 的变量进 future frame；临时变量在 poll 栈上<br>  切换成本      = 用户态 poll 返回/再次 poll，必要时由 reactor 触发 waker<br></code></pre></td></tr></table></figure>
+<p>所以这里观测到的栈使用结论是：thread 版本用“多个独立 OS 栈”换取直观的阻塞式控制流；Tokio 版本用“少量 worker 栈 + 多个堆上 future 状态机”承载大量并发。<code>0x7fffffff...</code> 一类地址反映的是当前线程正在 poll 的瞬时栈；<code>0x555556...</code> 一类任务捕获区才更接近 Tokio task 自己的持久状态。</p>
+<h4 id="实际测试数据验证"><a class="markdownIt-Anchor" href="#实际测试数据验证"></a> 实际测试数据验证</h4>
+<p>这部分结论后来又用两组运行数据验证了一次：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">cargo test<br>SPIDER_CONCURRENCY=20 cargo run<br>SPIDER_CONCURRENCY=20 target/debug/thread   # 外部 /proc 采样<br>SPIDER_CONCURRENCY=20 target/debug/async    # 外部 /proc 采样<br></code></pre></td></tr></table></figure>
+<p><code>cargo test</code> 通过。完整基准在 <code>SPIDER_CONCURRENCY=20</code> 下跑了 100 轮，输出到 <code>Result_20.csv</code>。这次可用缓存任务数为 29，三种模型的结果为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">model    runs  total  completed  elapsed_avg_ms  throughput_avg  peak_rss_max_bytes<br>process  100   29.00  29.00      406.106         71.58           251650048<br>thread   100   29.00  29.00      362.992         80.08           52621312<br>async    100   29.00  29.00      1122.478        25.84           49872896<br></code></pre></td></tr></table></figure>
+<p>这组性能数据不能简单理解成“async 一定更快”。在当前缓存/网络环境里，thread 版本的平均完成时间更短，Tokio 版本反而更慢；但这里讨论的是栈和状态保存方式，不是绝对吞吐胜负。对栈使用更直接的证据来自 <code>/proc</code> 线程采样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">thread 完整运行采样: peak_threads = 47<br>thread 短时直接采样: peak_threads = 45<br>async  完整运行采样: peak_threads = 7<br>async  短时直接采样: peak_threads = 7<br></code></pre></td></tr></table></figure>
+<p>这里的 <code>thread</code> 峰值明显高于设置的并发 20，是因为进程里还包含主线程、profiler 采样线程、缓存 HTTP server 相关线程，以及下载 worker 线程。关键点是：thread 版本会随着活跃下载任务额外增加大量 OS thread；Tokio 版本则稳定在少量 runtime/helper 线程上，用这些线程轮流 poll 多个 future。</p>
+<p>短时采样还读取了 <code>/proc/&lt;pid&gt;/task/&lt;tid&gt;/maps</code> 里的 <code>[stack]</code> 映射。由于线程创建和退出很快，按所有 TID 聚合的 stack map 数会有竞态，不能当作精确峰值；但它能辅助确认每个被采到的 OS thread 都有自己的栈映射。结合前面的 gdb 地址现象，可以得到更稳妥的判断：Tokio 的并发任务没有各自独立的 OS 栈，持久状态主要落在 future frame；thread 版本的并发任务则以 OS thread 和线程栈为单位保存阻塞现场。</p>
+<h4 id="gdb-堆栈大小实测"><a class="markdownIt-Anchor" href="#gdb-堆栈大小实测"></a> GDB 堆栈大小实测</h4>
+<p>当前环境中主线程栈限制为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">ulimit -s = 8192 KiB = 8 MiB<br>RUST_MIN_STACK 未设置<br>代码中没有自定义 thread_stack_size<br></code></pre></td></tr></table></figure>
+<p>为了避免只靠默认值估算，后面又用 <code>rust-gdb</code> 做了一次现场测量。使用的脚本是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">gdb_stack_thread_v2.gdb<br>gdb_stack_async_v2.gdb<br></code></pre></td></tr></table></figure>
+<p>脚本逻辑是：在 gdb 里暂停程序，遍历 <code>info threads</code> 中的每个线程，切换到该线程后读取 <code>$rsp</code>，再到 <code>/proc/&lt;pid&gt;/maps</code> 里找到包含这个 <code>$rsp</code> 的 VMA。这样得到的是“当前线程栈指针实际落在哪一段栈映射里”，比单纯 grep <code>[stack]</code> 更可靠。</p>
+<p>thread 版本停在 <code>download_thread.rs:33</code>，也就是首批 <code>SPIDER_CONCURRENCY=20</code> 个 worker spawn 完之后：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">SUMMARY model=thread<br>gdb_threads=52<br>unique_stack_vmas=52<br>mapped_stack_bytes_by_rsp=107237376<br>mapped_stack_mib_by_rsp=102.270<br></code></pre></td></tr></table></figure>
+<p>其中主线程当前 <code>[stack]</code> VMA 是 <code>136 KiB</code>，其余线程大多是 <code>2048 KiB</code> 左右的匿名栈映射，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">thread#1  stack_vma size = 136.0 KiB<br>thread#3  stack_vma size = 2048.0 KiB<br>thread#4  stack_vma size = 2048.0 KiB<br>...<br>thread#52 stack_vma size = 2048.0 KiB<br></code></pre></td></tr></table></figure>
+<p>async 版本停在 <code>download_async.rs:25</code>，即一个 Tokio child future 正在被 poll：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">SUMMARY model=async<br>gdb_threads=7<br>unique_stack_vmas=7<br>mapped_stack_bytes_by_rsp=12730368<br>mapped_stack_mib_by_rsp=12.141<br></code></pre></td></tr></table></figure>
+<p>对应的栈映射结构是 1 个当前主栈 VMA 加 6 个约 <code>2 MiB</code> 的 runtime/helper 线程栈：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">thread#1 stack_vma size = 136.0 KiB<br>thread#2 stack_vma size = 2056.0 KiB<br>thread#3 stack_vma size = 2048.0 KiB<br>thread#4 stack_vma size = 2048.0 KiB<br>thread#5 stack_vma size = 2048.0 KiB<br>thread#6 stack_vma size = 2048.0 KiB<br>thread#7 stack_vma size = 2048.0 KiB<br></code></pre></td></tr></table></figure>
+<p>因此，这次 gdb 实测得到的 OS 线程栈映射大小对比是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">thread 栈 VMA 总量 = 107237376 bytes = 102.270 MiB<br>async  栈 VMA 总量 =  12730368 bytes =  12.141 MiB<br><br>差值 = 94507008 bytes = 90.129 MiB<br>比例 = 107237376 / 12730368 = 8.42x<br></code></pre></td></tr></table></figure>
+<p>这个比例比前面按线程数粗估的 <code>4.8x - 5.0x</code> 更大，原因是 gdb 断点停在 thread 版本首批任务刚启动、reqwest blocking 内部线程和 Tokio helper 线程也已经出现的瞬间；也就是说，thread 版并不只是“20 个下载 worker + 主线程”，还额外带出了一批 <code>reqwest-interna</code> 和 <code>tokio-rt-worker</code> 线程。</p>
+<p>这也解释了为什么 async task 的 stackless 特性更关键：<code>SPIDER_CONCURRENCY=20</code> 下，Tokio 的 20 个并发下载 task 没有变成 20 条独立 OS 栈；它们的跨 <code>await</code> 状态在 future frame 中，poll 时复用这 7 个线程的栈。thread 版本则在 gdb 现场出现了 52 个可见 OS 线程，对应约 <code>102.270 MiB</code> 的栈 VMA。</p>
+<p>完整基准中的 RSS 也能看到这个方向，但幅度较小：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">thread peak_rss_max_bytes = 52621312  ≈ 50.2 MiB<br>async  peak_rss_max_bytes = 49872896  ≈ 47.6 MiB<br></code></pre></td></tr></table></figure>
+<p>RSS 只差约 <code>2.6 MiB</code>，是因为大部分线程栈只是地址空间/VMA 预留，并没有全部被写入提交；真正能明显拉开的是“可用/预留的 OS 栈空间”和线程数量。gdb 的 <code>$rsp -&gt; VMA</code> 结果更适合回答“每种模型实际保留了多少线程栈空间”。</p>
 <h3 id="waker-相关结论"><a class="markdownIt-Anchor" href="#waker-相关结论"></a> Waker 相关结论</h3>
 <p>符号表中能看到 <code>FuturesUnordered</code> 的 RawWaker / ArcWake 相关函数，例如：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">futures_util::stream::futures_unordered::task::waker_ref::clone_arc_raw<br>futures_util::stream::futures_unordered::task::waker_ref::wake_arc_raw<br>futures_util::stream::futures_unordered::task::waker_ref::wake_by_ref_arc_raw<br>futures_util::stream::futures_unordered::task::waker_ref::drop_arc_raw<br>futures_util::stream::futures_unordered::task::waker_ref::waker_vtable<br>&lt;...Task... as futures_task::arc_wake::ArcWake&gt;::wake<br>&lt;tokio::runtime::park::UnparkThread&gt;::unpark<br></code></pre></td></tr></table></figure>
