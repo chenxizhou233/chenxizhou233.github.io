@@ -27,7 +27,7 @@
 <meta property="og:description" content="好蠢，Summary写到正面了，晕晕。抓紧时间还没忘掉总结一下。  Week1 这门课一开始的理念就把 Concurrent 和系统间通信连到了一起，并提出了 External 和 Internal 的概念，并认为内部状态外部不可见，以 τ\tauτ 来表示，其他的就是正常 Transition。 主要就是把模型以 FSM 的形式表示出来。比较重要的感觉有一下几点  FSM 相关 这一块主要还是定">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-22T02:00:08.000Z">
-<meta property="article:modified_time" content="2026-05-18T10:41:52.417Z">
+<meta property="article:modified_time" content="2026-06-17T08:01:16.048Z">
 <meta property="article:author" content="Xizhou Chen">
 <meta property="article:tag" content="CS">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.9k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          21 分钟
+          25 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年5月18日 晚上
+                    本文最后更新于 2026年6月17日 下午
                   
                 
               </p>
@@ -537,6 +537,37 @@ External 就是 有多个操作。</p>
 <li>但是考虑大家都拿起放下，拿起放下，会无限循环 (Starve)</li>
 <li>进而我们得出 Deadlock free != Starvation free != fairness</li>
 </ol>
+<h3 id="证明要点"><a class="markdownIt-Anchor" href="#证明要点"></a> 证明要点</h3>
+<ol>
+<li>分类讨论的时候按 Inference Rule 来分类。</li>
+<li>证明的时候要注意 Arbitrary, 不用 fixed。</li>
+<li>要证的目的是新关系 R bisimulation， 然后推出中间的那个 Bisimulate。</li>
+</ol>
+<h2 id="pseuco"><a class="markdownIt-Anchor" href="#pseuco"></a> pseuCo</h2>
+<p>教授自创的 Concurrent 教学语言，类似 Java，考试会用。</p>
+<h3 id="语法"><a class="markdownIt-Anchor" href="#语法"></a> 语法</h3>
+<!-- TODO -->
+<h2 id="concurrency-in-java"><a class="markdownIt-Anchor" href="#concurrency-in-java"></a> Concurrency in Java</h2>
+<p>主要了解一下 Java 的 Concurrency 相关知识，考试可能会用</p>
+<h3 id="lock-condvar-semaphore"><a class="markdownIt-Anchor" href="#lock-condvar-semaphore"></a> Lock, Condvar, Semaphore</h3>
+<h4 id="lock"><a class="markdownIt-Anchor" href="#lock"></a> Lock</h4>
+<p>语法一般为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Lock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();<br></code></pre></td></tr></table></figure>
+<p>这是显式锁。同时每一个 Object 还有自己的隐式锁，用 <code>synchronized</code> 实现，语法一般如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Worker</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">f</span><span class="hljs-params">()</span>&#123;<br><br>    &#125;<span class="hljs-comment">//每个实例化对象自己的隐式锁</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">g</span><span class="hljs-params">()</span>&#123;<br>    <br>    &#125;<span class="hljs-comment">//整个 Class 共用的一把锁。</span><br>&#125;<br><br><span class="hljs-keyword">synchronized</span> (obj)&#123;<br><br>&#125;<span class="hljs-comment">//获取 obj 的隐式锁，进入自动 lock， 出去自动 unlock</span><br></code></pre></td></tr></table></figure>
+<h4 id="condvar"><a class="markdownIt-Anchor" href="#condvar"></a> Condvar</h4>
+<p>Java 里的 Condition 是不带语法的，更像是 yeild() 的感觉，不过这里是把自己在 Cond 队列里面登记上了，而且会<strong>自动释放对应的锁</strong>。</p>
+<p>利用上文的 <code>lock</code>, Condition 相关操作为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-type">Condition</span> <span class="hljs-variable">cond</span> <span class="hljs-operator">=</span> lock.newCondition()<br>cond.await();<br>cond.signal();<span class="hljs-comment">//唤醒这个 Condition 对应的一个线程</span><br>cond.signalAll();<span class="hljs-comment">//唤醒所有 Condition 对应的线程</span><br></code></pre></td></tr></table></figure>
+<p>还有一个和 Monitor 配套的条件等待，语法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Monitor obj;<br>obj.wait();<br>obj.notify();<span class="hljs-comment">//唤醒一个 obj 的等待线程</span><br>obj.notifyAll();<span class="hljs-comment">//唤醒所有 obj 相关的等待线程</span><br></code></pre></td></tr></table></figure>
+<p>这些条件检查都需要自旋检查，因为操作系统/ JVM 调度可能会虚假唤醒。</p>
+<h4 id="semaphore"><a class="markdownIt-Anchor" href="#semaphore"></a> Semaphore</h4>
+<p>课上好像没咋讲，也没咋用。记录一下用法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Semaphore</span> <span class="hljs-variable">sem</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Semaphore</span>(<span class="hljs-number">3</span>)<br>sem.acquire();<br>sem.release();<br></code></pre></td></tr></table></figure>
+<h3 id="异常控制流"><a class="markdownIt-Anchor" href="#异常控制流"></a> 异常控制流</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span>&#123;<br>    <span class="hljs-comment">//1</span><br>&#125;<span class="hljs-keyword">catch</span>&#123;<br>    <span class="hljs-comment">//2</span><br>&#125;<span class="hljs-keyword">finally</span>&#123;<br>    <span class="hljs-comment">//3</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里的实现原理是在 <code>return</code> 之前，把 <code>finally</code> 块里面的内容插进去，然后再执行原来的 <code>return</code> 语句。因此如果在 <code>finally</code> 块里面干任何事情，都会覆盖之前的实现，如果有 <code>return</code> 或者 <code>throw</code> 的话也会直接覆盖。</p>
 
                 
               </div>
